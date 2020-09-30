@@ -1,7 +1,7 @@
 # windows_sandbox
 
 Travis (.com) dev branch:
-[![Build Status](https://travis-ci.com/githubfoam/windows_sandbox.svg?branch=dev)](https://travis-ci.com/githubfoam/windows_sandbox)  
+[![Build Status](https://travis-ci.com/githubfoam/windows_sandbox.svg?branch=master)](https://travis-ci.com/githubfoam/windows_sandbox)  
 
 ~~~
 

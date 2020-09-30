@@ -22,10 +22,6 @@ matrix:
 
 # # #   # =============================================windows=============================================
 
-#Multipass defaults to using Hyper-V as it’s virtualization provider
-# https://multipass.run/docs/installing-on-windows
-#https://github.com/canonical/multipass/releases
-#https://github.com/canonical/multipass
     - name: "chocolatey  Python 3.8 on Windows"
       os: windows
       language: shell
