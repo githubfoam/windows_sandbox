@@ -26,7 +26,7 @@ matrix:
 # https://multipass.run/docs/installing-on-windows
 #https://github.com/canonical/multipass/releases
 #https://github.com/canonical/multipass
-    - name: "multipass  Python 3.8 on Windows"
+    - name: "chocolatey  Python 3.8 on Windows"
       os: windows
       language: shell
       env:
@@ -38,11 +38,8 @@ matrix:
         - source $HOME/venv/Scripts/activate
       <<: *fleet_install_tasks
       <<: *fleet_script_tasks
-      script:
-        # - echo "choco install multipass" #- multipass (exited -1) - Error while running 'C:\ProgramData\chocolatey\lib\multipass\tools\chocolateyinstall.ps1'
+      script:        
         - choco install wget
-        # - wget https://github.com/canonical/multipass/releases/download/v1.2.1/multipass-1.2.1+win-win64.exe
-        - dir
       after_success:
         - deactivate
 
