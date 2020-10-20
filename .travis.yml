@@ -19,14 +19,7 @@ matrix:
   fast_finish: true
   include:
 
-
-# # #   # =============================================windows=============================================
-
-#Multipass defaults to using Hyper-V as it’s virtualization provider
-# https://multipass.run/docs/installing-on-windows
-#https://github.com/canonical/multipass/releases
-#https://github.com/canonical/multipass
-    - name: "multipass  Python 3.8 on Windows"
+    - name: "deploy Grafana InfluxDB    Python 3.8 on Windows"
       os: windows
       language: shell
       env:
@@ -36,41 +29,97 @@ matrix:
         - pip install virtualenv
         - virtualenv $HOME/venv
         - source $HOME/venv/Scripts/activate
-      <<: *fleet_install_tasks
-      <<: *fleet_script_tasks
+        - python --version
+        - pip install -r requirements.txt
+      # <<: *fleet_install_tasks
+      # <<: *fleet_script_tasks
       script:
-        # - echo "choco install multipass" #- multipass (exited -1) - Error while running 'C:\ProgramData\chocolatey\lib\multipass\tools\chocolateyinstall.ps1'
-        - choco install wget
-        # - wget https://github.com/canonical/multipass/releases/download/v1.2.1/multipass-1.2.1+win-win64.exe
-        - dir
+        - choco install kubernetes-helm
+        - sudo helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+        - sudo helm install stable/influxdb --name-template influxdb
+        - sudo helm install stable/grafana --name-template grafana         
+        # - $version = (Invoke-RestMethod https://api.github.com/repos/argoproj/argo-cd/releases/latest).tag_name
+        # - $url = "https://github.com/argoproj/argo-cd/releases/download/" + $version + "/argocd-windows-amd64.exe"
+        # - $output = "argocd.exe"
+        # - Invoke-WebRequest -Uri $url -OutFile $output
       after_success:
         - deactivate
 
-    - name: "Python 3.8 on Windows"
+# https://argoproj.github.io/argo-cd/cli_installation/
+    - name: "deploy argocd   Python 3.8 on Windows"
       os: windows
       language: shell
       env:
         - PATH=/c/Python38:/c/Python38/Scripts:$PATH
       before_install:
-        - choco install python --version 3.8.1
+        - choco install python
         - pip install virtualenv
         - virtualenv $HOME/venv
         - source $HOME/venv/Scripts/activate
-      <<: *fleet_install_tasks
-      <<: *fleet_script_tasks
+        - python --version
+        - pip install -r requirements.txt
+      # <<: *fleet_install_tasks
+      # <<: *fleet_script_tasks
+      script:
+        - choco install wget
+        - $version = (Invoke-RestMethod https://api.github.com/repos/argoproj/argo-cd/releases/latest).tag_name
+        - $url = "https://github.com/argoproj/argo-cd/releases/download/" + $version + "/argocd-windows-amd64.exe"
+        - $output = "argocd.exe"
+        - Invoke-WebRequest -Uri $url -OutFile $output
       after_success:
         - deactivate
+
+# # #   # =============================================windows=============================================
+
+# #Multipass defaults to using Hyper-V as it’s virtualization provider
+# # https://multipass.run/docs/installing-on-windows
+# #https://github.com/canonical/multipass/releases
+# #https://github.com/canonical/multipass
+#     - name: "multipass  Python 3.8 on Windows"
+#       os: windows
+#       language: shell
+#       env:
+#         - PATH=/c/Python38:/c/Python38/Scripts:$PATH
+#       before_install:
+#         - choco install python
+#         - pip install virtualenv
+#         - virtualenv $HOME/venv
+#         - source $HOME/venv/Scripts/activate
+#       <<: *fleet_install_tasks
+#       <<: *fleet_script_tasks
+#       script:
+#         # - echo "choco install multipass" #- multipass (exited -1) - Error while running 'C:\ProgramData\chocolatey\lib\multipass\tools\chocolateyinstall.ps1'
+#         - choco install wget
+#         # - wget https://github.com/canonical/multipass/releases/download/v1.2.1/multipass-1.2.1+win-win64.exe
+#         - dir
+#       after_success:
+#         - deactivate
+
+#     - name: "Python 3.8 on Windows"
+#       os: windows
+#       language: shell
+#       env:
+#         - PATH=/c/Python38:/c/Python38/Scripts:$PATH
+#       before_install:
+#         - choco install python --version 3.8.1
+#         - pip install virtualenv
+#         - virtualenv $HOME/venv
+#         - source $HOME/venv/Scripts/activate
+#       <<: *fleet_install_tasks
+#       <<: *fleet_script_tasks
+#       after_success:
+#         - deactivate
     
-    - name: "Python 3.7 on Windows"
-      os: windows
-      language: shell
-      env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
-      before_install:
-        - choco install python --version 3.7.3
-        - python -m pip install virtualenv
-        - virtualenv $HOME/venv
-        - source $HOME/venv/Scripts/activate
-      <<: *fleet_install_tasks
-      <<: *fleet_script_tasks
-      after_success:
-        - deactivate
+#     - name: "Python 3.7 on Windows"
+#       os: windows
+#       language: shell
+#       env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
+#       before_install:
+#         - choco install python --version 3.7.3
+#         - python -m pip install virtualenv
+#         - virtualenv $HOME/venv
+#         - source $HOME/venv/Scripts/activate
+#       <<: *fleet_install_tasks
+#       <<: *fleet_script_tasks
+#       after_success:
+#         - deactivate
