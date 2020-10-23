@@ -19,55 +19,70 @@ matrix:
   fast_finish: true
   include:
 
-    - name: "deploy Grafana InfluxDB    Python 3.8 on Windows"
+    - name: "deploy Mobile Security Framework (MobSF) Python 3.8 on Windows"
       os: windows
       language: shell
       env:
         - PATH=/c/Python38:/c/Python38/Scripts:$PATH
       before_install:
         - choco install python
-        - pip install virtualenv
-        - virtualenv $HOME/venv
-        - source $HOME/venv/Scripts/activate
         - python --version
-        - pip install -r requirements.txt
-      # <<: *fleet_install_tasks
-      # <<: *fleet_script_tasks
+        # - pip install -r requirements.txt
       script:
-        - choco install kubernetes-helm
-        - sudo helm repo add stable https://kubernetes-charts.storage.googleapis.com/
-        - sudo helm install stable/influxdb --name-template influxdb
-        - sudo helm install stable/grafana --name-template grafana         
-        # - $version = (Invoke-RestMethod https://api.github.com/repos/argoproj/argo-cd/releases/latest).tag_name
-        # - $url = "https://github.com/argoproj/argo-cd/releases/download/" + $version + "/argocd-windows-amd64.exe"
-        # - $output = "argocd.exe"
-        # - Invoke-WebRequest -Uri $url -OutFile $output
+        - choco install git
+        - git clone https://github.com/MobSF/Mobile-Security-Framework-MobSF.git
+        - cd Mobile-Security-Framework-MobSF
+        - setup.bat         
       after_success:
         - deactivate
 
+    # - name: "deploy Grafana InfluxDB    Python 3.8 on Windows"
+    #   os: windows
+    #   language: shell
+    #   env:
+    #     - PATH=/c/Python38:/c/Python38/Scripts:$PATH
+    #   before_install:
+    #     - choco install python
+    #     # The command "pip install virtualenv" failed and exited with 127 during 
+    #     # - pip install virtualenv
+    #     # - virtualenv $HOME/venv
+    #     # - source $HOME/venv/Scripts/activate
+    #     - python --version
+    #     # - pip install -r requirements.txt
+    #   script:
+    #     - choco install kubernetes-helm
+    #     - sudo helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+    #     - sudo helm install stable/influxdb --name-template influxdb
+    #     - sudo helm install stable/grafana --name-template grafana         
+    #     # - $version = (Invoke-RestMethod https://api.github.com/repos/argoproj/argo-cd/releases/latest).tag_name
+    #     # - $url = "https://github.com/argoproj/argo-cd/releases/download/" + $version + "/argocd-windows-amd64.exe"
+    #     # - $output = "argocd.exe"
+    #     # - Invoke-WebRequest -Uri $url -OutFile $output
+    #   after_success:
+    #     - deactivate
+
 # https://argoproj.github.io/argo-cd/cli_installation/
-    - name: "deploy argocd   Python 3.8 on Windows"
-      os: windows
-      language: shell
-      env:
-        - PATH=/c/Python38:/c/Python38/Scripts:$PATH
-      before_install:
-        - choco install python
-        - pip install virtualenv
-        - virtualenv $HOME/venv
-        - source $HOME/venv/Scripts/activate
-        - python --version
-        - pip install -r requirements.txt
-      # <<: *fleet_install_tasks
-      # <<: *fleet_script_tasks
-      script:
-        - choco install wget
-        - $version = (Invoke-RestMethod https://api.github.com/repos/argoproj/argo-cd/releases/latest).tag_name
-        - $url = "https://github.com/argoproj/argo-cd/releases/download/" + $version + "/argocd-windows-amd64.exe"
-        - $output = "argocd.exe"
-        - Invoke-WebRequest -Uri $url -OutFile $output
-      after_success:
-        - deactivate
+    # - name: "deploy argocd   Python 3.8 on Windows"
+    #   os: windows
+    #   language: shell
+    #   env:
+    #     - PATH=/c/Python38:/c/Python38/Scripts:$PATH
+    #   before_install:
+    #     - choco install python
+    #     # The command "pip install virtualenv" failed and exited with 127 during 
+    #     # - pip install virtualenv
+    #     # - virtualenv $HOME/venv
+    #     # - source $HOME/venv/Scripts/activate
+    #     - python --version
+    #     # - pip install -r requirements.txt
+    #   script:
+    #     - choco install wget
+    #     - $version = (Invoke-RestMethod https://api.github.com/repos/argoproj/argo-cd/releases/latest).tag_name
+    #     - $url = "https://github.com/argoproj/argo-cd/releases/download/" + $version + "/argocd-windows-amd64.exe"
+    #     - $output = "argocd.exe"
+    #     - Invoke-WebRequest -Uri $url -OutFile $output
+    #   after_success:
+    #     - deactivate
 
 # # #   # =============================================windows=============================================
 
