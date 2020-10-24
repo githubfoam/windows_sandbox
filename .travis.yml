@@ -47,13 +47,12 @@ matrix:
       addons:
               apt:
                 sources:
-                  - sourceline: deb [arch=amd64] https://packages.microsoft.com/ubuntu/20.04/prod trusty main
+                  - sourceline: deb [arch=amd64] https://packages.microsoft.com/ubuntu/20.04/prod focal main
                     key_url: https://packages.microsoft.com/keys/microsoft.asc
                 packages:
                   - powershell      
       before_install:
         # - powershell write-host "Hello World" #powershell: command not found
-        - pwsh write-host "Hello World"
         - PS write-host "Hello World"
         - pwsh -c 'Install-Module Pester -Force -Scope CurrentUser; .\DoTests.ps1'
         - pwsh -f "${env:TRAVIS_BUILD_DIR}/DoTests.ps1"
@@ -64,13 +63,13 @@ matrix:
       addons:
               apt:
                 sources:
-                  - sourceline: deb [arch=amd64] https://packages.microsoft.com/ubuntu/18.04/prod trusty main
+                  - sourceline: deb [arch=amd64] https://packages.microsoft.com/ubuntu/18.04/prod bionic main
                     key_url: https://packages.microsoft.com/keys/microsoft.asc
                 packages:
                   - powershell      
       before_install:
         # - powershell write-host "Hello World" #powershell: command not found
-        - pwsh write-host "Hello World"
+        # - pwsh write-host "Hello World" #The argument 'write-host' is not recognized as the name of a script file.
         - PS write-host "Hello World"
         - pwsh -c 'Install-Module Pester -Force -Scope CurrentUser; .\DoTests.ps1'
         - pwsh -f "${env:TRAVIS_BUILD_DIR}/DoTests.ps1"
@@ -88,7 +87,6 @@ matrix:
                   - powershell      
       before_install:
         # - powershell write-host "Hello World" #powershell: command not found
-        - pwsh write-host "Hello World"
         - PS write-host "Hello World"
         - pwsh -c 'Install-Module Pester -Force -Scope CurrentUser; .\DoTests.ps1'
         - pwsh -f "${env:TRAVIS_BUILD_DIR}/DoTests.ps1"
