@@ -19,6 +19,21 @@ matrix:
   fast_finish: true
   include:
 
+    - name: "powershell scripts Python 3.8 on Windows"
+      os: windows
+      language: shell
+      env:
+        - PATH=/c/Python38:/c/Python38/Scripts:$PATH
+      before_install:
+        - choco install python
+        - python --version
+        # - pip install -r requirements.txt
+      script:
+        - cmd.exe /c whoami         
+      after_success:
+        - deactivate
+
+# https://mobsf.github.io/docs/#/installation?id=windows
     - name: "deploy Mobile Security Framework (MobSF) Python 3.8 on Windows"
       os: windows
       language: shell
