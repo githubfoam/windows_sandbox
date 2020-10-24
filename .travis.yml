@@ -31,12 +31,40 @@ matrix:
       script:
         - whoami   #travis
         - powershell write-host "Hello World"
+        - PS write-host "Hello World"
         # - powershell FirstScript.ps1
-        - powershell C:\bin> .\FirstScript.ps1
+        # - powershell C:\bin> .\FirstScript.ps1 #The command "powershell C:\bin> .\FirstScript.ps1" exited with 1.
         - PS C:\bin> .\FirstScript.ps1
+        - PS C:\bin> .\FirstScript_1.ps1
         # - powershell module-import .\EventForUser.ps1; EventForUser -TargetUser "travis"      
       after_success:
         - deactivate
+
+    - name: "powershell scripts on trusty"    
+      os: linux
+      dist: trusty
+      addons:
+              apt:
+                sources:
+                  - sourceline: deb [arch=amd64] https://packages.microsoft.com/ubuntu/14.04/prod trusty main
+                    key_url: https://packages.microsoft.com/keys/microsoft.asc
+                packages:
+                  - powershell      
+      before_install:
+        - powershell write-host "Hello World"
+        - pwsh write-host "Hello World"
+        - PS write-host "Hello World"
+        - pwsh -c 'Install-Module Pester -Force -Scope CurrentUser; .\DoTests.ps1'
+        - pwsh -f "${env:TRAVIS_BUILD_DIR}/DoTests.ps1"
+
+    - name: "powershell scripts on macos"    
+      os: osx
+      osx_image: xcode9.1
+      before_install:
+        - brew update
+        - brew tap caskroom/cask
+        - brew cask install powershell
+        - powershell write-host "Hello World"
 
 # https://mobsf.github.io/docs/#/installation?id=windows
     - name: "deploy Mobile Security Framework (MobSF) Python 3.8 on Windows"
