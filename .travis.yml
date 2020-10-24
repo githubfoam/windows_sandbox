@@ -30,7 +30,7 @@ matrix:
         # - pip install -r requirements.txt
       script:
         - whoami   #travis
-        - powershell 
+        - powershell write-host "Hello World"
         # - powershell module-import .\EventForUser.ps1; EventForUser -TargetUser "travis"      
       after_success:
         - deactivate
