@@ -31,6 +31,8 @@ matrix:
       script:
         - whoami   #travis
         - powershell write-host "Hello World"
+        - powershell FirstScript.ps1
+        - powershell & "FirstScript.ps1"
         # - powershell module-import .\EventForUser.ps1; EventForUser -TargetUser "travis"      
       after_success:
         - deactivate
