@@ -45,12 +45,8 @@ matrix:
       - linux
       dist: focal 
       addons:
-              apt:
-                sources:
-                  - sourceline: deb [arch=amd64] https://packages.microsoft.com/ubuntu/20.04/prod focal main
-                    key_url: https://packages.microsoft.com/keys/microsoft.asc
-                packages:
-                  - powershell      
+        snaps:
+        - powershell                        
       before_install:
         # - powershell write-host "Hello World" #powershell: command not found
         - PS write-host "Hello World"
@@ -70,7 +66,33 @@ matrix:
       before_install:
         # - powershell write-host "Hello World" #powershell: command not found
         # - pwsh write-host "Hello World" #The argument 'write-host' is not recognized as the name of a script file.
-        - PS write-host "Hello World"
+        # - PS write-host "Hello World" #PS: command not found
+        - pwsh -c 'Install-Module Pester -Force -Scope CurrentUser; .\DoTests.ps1'
+        - pwsh -f "${env:TRAVIS_BUILD_DIR}/DoTests.ps1"
+
+    - name: "powershell scripts w snap on xenial 16.04"    
+      os: linux
+      dist: xenial 
+      addons:
+        snaps:
+        - powershell     
+      before_install:
+        # - powershell write-host "Hello World" #powershell: command not found
+        # - pwsh write-host "Hello World" #The argument 'write-host' is not recognized as the name of a script file.
+        # - PS write-host "Hello World" #PS: command not found
+        - pwsh -c 'Install-Module Pester -Force -Scope CurrentUser; .\DoTests.ps1'
+        - pwsh -f "${env:TRAVIS_BUILD_DIR}/DoTests.ps1"
+
+    - name: "powershell scripts w snap on bionic 18.04"    
+      os: linux
+      dist: bionic 
+      addons:
+        snaps:
+        - powershell     
+      before_install:
+        # - powershell write-host "Hello World" #powershell: command not found
+        # - pwsh write-host "Hello World" #The argument 'write-host' is not recognized as the name of a script file.
+        # - PS write-host "Hello World" #PS: command not found
         - pwsh -c 'Install-Module Pester -Force -Scope CurrentUser; .\DoTests.ps1'
         - pwsh -f "${env:TRAVIS_BUILD_DIR}/DoTests.ps1"
 
@@ -98,7 +120,8 @@ matrix:
       - xcode12.2 #macOS 10.15.7
       before_install:
         - brew update
-        - brew tap caskroom/cask
+        # - brew tap caskroom/cask #Error: caskroom/cask was moved. Tap homebrew/cask instead.
+        - brew tap homebrew/cask
         - brew cask install powershell
         - powershell write-host "Hello World"
 
