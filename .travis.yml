@@ -37,11 +37,47 @@ matrix:
         - PS C:\bin> .\FirstScript.ps1
         - PS C:\bin> .\FirstScript_1.ps1
         # - powershell module-import .\EventForUser.ps1; EventForUser -TargetUser "travis"      
-      after_success:
-        - deactivate
+      # after_success:
+        # - deactivate #deactivate: command not found
 
-    - name: "powershell scripts on trusty"    
+    - name: "powershell scripts on focal 20.04"    
+      os: 
+      - linux
+      dist: focal 
+      addons:
+              apt:
+                sources:
+                  - sourceline: deb [arch=amd64] https://packages.microsoft.com/ubuntu/20.04/prod trusty main
+                    key_url: https://packages.microsoft.com/keys/microsoft.asc
+                packages:
+                  - powershell      
+      before_install:
+        # - powershell write-host "Hello World" #powershell: command not found
+        - pwsh write-host "Hello World"
+        - PS write-host "Hello World"
+        - pwsh -c 'Install-Module Pester -Force -Scope CurrentUser; .\DoTests.ps1'
+        - pwsh -f "${env:TRAVIS_BUILD_DIR}/DoTests.ps1"
+
+    - name: "powershell scripts on bionic 18.04"    
       os: linux
+      dist: bionic 
+      addons:
+              apt:
+                sources:
+                  - sourceline: deb [arch=amd64] https://packages.microsoft.com/ubuntu/18.04/prod trusty main
+                    key_url: https://packages.microsoft.com/keys/microsoft.asc
+                packages:
+                  - powershell      
+      before_install:
+        # - powershell write-host "Hello World" #powershell: command not found
+        - pwsh write-host "Hello World"
+        - PS write-host "Hello World"
+        - pwsh -c 'Install-Module Pester -Force -Scope CurrentUser; .\DoTests.ps1'
+        - pwsh -f "${env:TRAVIS_BUILD_DIR}/DoTests.ps1"
+
+    - name: "powershell scripts on trusty 14.04"    
+      os: 
+      - linux
       dist: trusty
       addons:
               apt:
@@ -51,15 +87,17 @@ matrix:
                 packages:
                   - powershell      
       before_install:
-        - powershell write-host "Hello World"
+        # - powershell write-host "Hello World" #powershell: command not found
         - pwsh write-host "Hello World"
         - PS write-host "Hello World"
         - pwsh -c 'Install-Module Pester -Force -Scope CurrentUser; .\DoTests.ps1'
         - pwsh -f "${env:TRAVIS_BUILD_DIR}/DoTests.ps1"
 
-    - name: "powershell scripts on macos"    
-      os: osx
-      osx_image: xcode9.1
+    - name: "powershell scripts on macos xcode12.2"    
+      os: 
+      - osx
+      osx_image: 
+      - xcode12.2 #macOS 10.15.7
       before_install:
         - brew update
         - brew tap caskroom/cask
@@ -68,7 +106,8 @@ matrix:
 
 # https://mobsf.github.io/docs/#/installation?id=windows
     - name: "deploy Mobile Security Framework (MobSF) Python 3.8 on Windows"
-      os: windows
+      os: 
+      - windows
       language: shell
       env:
         - PATH=/c/Python38:/c/Python38/Scripts:$PATH
@@ -82,8 +121,8 @@ matrix:
         - cd Mobile-Security-Framework-MobSF
         - dir
         # - setup.bat         
-      after_success:
-        - deactivate
+      # after_success:
+        # - deactivate #deactivate: command not found
 
     # - name: "deploy Grafana InfluxDB    Python 3.8 on Windows"
     #   os: windows
