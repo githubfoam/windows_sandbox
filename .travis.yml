@@ -29,7 +29,8 @@ matrix:
         - python --version
         # - pip install -r requirements.txt
       script:
-        - whoami         
+        - whoami   #travis
+        - module-import .\EventForUser.ps1; EventForUser -TargetUser "travis"      
       after_success:
         - deactivate
 
@@ -47,7 +48,8 @@ matrix:
         - choco install git
         - git clone https://github.com/MobSF/Mobile-Security-Framework-MobSF.git
         - cd Mobile-Security-Framework-MobSF
-        - setup.bat         
+        - dir
+        # - setup.bat         
       after_success:
         - deactivate
 

@@ -5,6 +5,10 @@ Travis (.com) dev branch:
 
 ~~~
 
+Powershell #
+Powershell can be used by calling powershell in your .travis.yml file for now. We are looking into adding first class Powershell support very soon.
+https://docs.travis-ci.com/user/reference/windows/#powershell
+
 The Windows Build Environment
 https://docs.travis-ci.com/user/reference/windows/
 
