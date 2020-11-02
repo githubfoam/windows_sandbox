@@ -29,6 +29,7 @@ matrix:
         - python --version
       script:
         - choco install minikube
+        - minikube version
       after_success:
         - deactivate
 
@@ -41,9 +42,10 @@ matrix:
         - choco install python
         - python --version
       script:
-        - $url = "https://storage.googleapis.com/minikube/releases/latest/minikube-installer.exe"
         - $output = "minikube-installer.exe"
+        - $url = "https://storage.googleapis.com/minikube/releases/latest/minikube-installer.exe"
         - Invoke-WebRequest -Uri $url -OutFile $output
+        - minikube version
       after_success:
         - deactivate
 
