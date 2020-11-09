@@ -19,35 +19,28 @@ matrix:
   fast_finish: true
   include:
 
-    - name: "deploy minikube latest w chocolatey Python 3.8 on Windows"
-      os: windows
-      language: shell
-      env:
-        - PATH=/c/Python38:/c/Python38/Scripts:$PATH
-      before_install:
-        - choco install python
-        - python --version
+    - name: "nuget demo"
+    # - name: "nuget demo Python 3.8 on Windows"
+      # os: windows
+      os: linux
+      dist: bionic
+      arch: amd64 
+      sudo: false       
+      language: csharp
+      mono:
+      - latest
+      env: 
+      - TEST_VERSION=1.0.8
+      # env:
+      #   - PATH=/c/Python38:/c/Python38/Scripts:$PATH
+      # before_install:
+      #   - choco install python
+      #   - python --version
+        # - pip install -r requirements.txt
       script:
-        - choco install minikube
-        - minikube version
+        - whoami   #travis
       after_success:
-        - deactivate
-
-    - name: "deploy minikube latest wo chocolatey Python 3.8 on Windows"
-      os: windows
-      language: shell
-      env:
-        - PATH=/c/Python38:/c/Python38/Scripts:$PATH
-      before_install:
-        - choco install python
-        - python --version
-      script:
-        - $output = "minikube-installer.exe"
-        - $url = "https://storage.googleapis.com/minikube/releases/latest/minikube-installer.exe"
-        - Invoke-WebRequest -Uri $url -OutFile $output
-        - minikube version
-      after_success:
-        - deactivate
+        - deactivate #deactivate: command not found
 
 #     - name: "powershell scripts Python 3.8 on Windows"
 #       os: windows
