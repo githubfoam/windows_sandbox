@@ -20,6 +20,8 @@ https://psdeploy.readthedocs.io/en/latest/Quick-Start.-Installation-and-Example/
 
 https://github.com/pester/Pester
 
+https://www.powershellgallery.com/
+
 https://github.com/dotnet/msbuild
 ~~~
 
