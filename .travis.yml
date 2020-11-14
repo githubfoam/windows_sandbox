@@ -68,11 +68,20 @@ matrix:
       os: 
       - linux
       dist: focal 
+# channels:
+#   latest/stable:    7.1.0 2020-11-11 (149) 68MB classic
+#   latest/candidate: 7.1.0 2020-11-11 (149) 68MB classic
+#   latest/beta:      7.1.0 2020-11-11 (149) 68MB classic
+#   latest/edge:      7.1.0 2020-11-11 (149) 68MB classic
+#   lts/stable:       7.0.3 2020-08-17 (139) 62MB classic
+#   lts/candidate:    7.0.3 2020-08-17 (139) 62MB classic
+#   lts/beta:         7.0.3 2020-08-17 (139) 62MB classic
+#   lts/edge:         7.0.3 2020-08-17 (139) 62MB classic     
       addons:
         snaps:
         - name: powershell
           confinement: classic
-          # channel: edge                              
+          channel: latest/stable                              
       before_install:
         # - powershell write-host "Hello World" #powershell: command not found
         # PS: command not found
@@ -80,8 +89,10 @@ matrix:
         - snap info powershell
         - snap info --verbose powershell
       script:
+        # System.Management.Automation.RuntimeException: No test files were found and no scriptblocks were provided.        
         - pwsh -c 'Install-Module Pester -Force -Scope CurrentUser; .\DoTests.ps1'
-        - pwsh -f "${env:TRAVIS_BUILD_DIR}/DoTests.ps1"        
+        - pwsh -f "DoTests.ps1"
+        # - pwsh -f "${env:TRAVIS_BUILD_DIR}/DoTests.ps1"        
         
 
     # - name: "powershell scripts on bionic 18.04"    
