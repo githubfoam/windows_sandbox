@@ -13,3 +13,9 @@ https://scoop.sh/
 https://chocolatey.org/
 ~~~
 
+~~~
+System Monitor (Sysmon)
+https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon
+Sam Spade for Windows
+https://www.sans.org/reading-room/whitepapers/tools/sam-spade-934
+~~~
