@@ -8,6 +8,8 @@ github actions :
 
 github actions :  
 [![windows-workflow](https://github.com/githubfoam/windows_sandbox/workflows/windows-workflow/badge.svg)](https://github.com/githubfoam/windows_sandbox/actions?query=workflow%3A%22windows-workflow%22+branch%3Afeature_githubactions)  
+
+
 ~~~
 
 The Windows Build Environment
@@ -16,5 +18,10 @@ https://docs.travis-ci.com/user/reference/windows/
 https://scoop.sh/
 
 https://chocolatey.org/
+
+https://github.com/PowerShell/PSScriptAnalyzer
+
+https://github.com/pester/Pester
+
 ~~~
 
