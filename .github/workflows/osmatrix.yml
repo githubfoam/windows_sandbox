@@ -5,7 +5,7 @@ name: osmatrix
 
 on:
   push:
-    branches: [ githubactions_powershell ]
+    branches: [ feature_githubactions ]
   # pull_request:
   #   branches: [ githubactions_powershell ]
 
