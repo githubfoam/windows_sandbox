@@ -10,29 +10,8 @@ on:
 
 jobs:
 
-# https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-nodejs
-  windows-node-js:
-    runs-on: windows-latest
-    strategy:
-      matrix:
-        node-version: [8.x, 10.x, 12.x]
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: "osfingerprinting"
-      run: systeminfo | more          
-    - run: npm install
-    # - run: npm run build --if-present #npm ERR! enoent This is related to npm not being able to find a file.
-    # - run: npm test
-      env:
-        CI: true
-
-
-
-  windows:
+  windows-latest:
+    name: "windows-latest Microsoft Windows Server 2019 Datacenter"  
     runs-on: windows-latest
     steps:
     - name: Checkout
@@ -54,7 +33,8 @@ jobs:
     - name: "query unusual services"
       run: sc query  
 
-  windows-2019:
+  windows-2019: 
+    name: "Microsoft Windows Server 2019 Datacenter"
     runs-on: windows-2019
     steps:
     - name: Checkout
@@ -77,6 +57,7 @@ jobs:
       run: sc query 
 
   windows-2016:
+    name: "Microsoft Windows Server 2016 Datacenter"
     runs-on: windows-2016
     steps:
     - name: Checkout

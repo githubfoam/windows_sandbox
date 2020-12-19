@@ -1,0 +1,77 @@
+
+name: "Node.js CI workflow"
+
+on:
+  push:
+    branches: [ feature_githubactions ]
+  # pull_request:
+  #   branches: [ githubactions_powershell ]
+
+
+jobs:
+
+# https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-nodejs
+  windows-latest-nodejs:
+    name: "node.js matrix Microsoft Windows Server 2019 Datacenter"
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: "osfingerprinting"
+      run: systeminfo | more
+    - name: "npm install"                
+    - run: npm install
+    # - run: npm run build --if-present #npm ERR! enoent This is related to npm not being able to find a file.
+    # - run: npm test
+      env:
+        CI: true
+
+# https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-nodejs
+  ubuntu-latest-nodejs:
+    name: "node.js matrix ubuntu-18.04"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: "os fingerprinting"
+      run: hostnamectl status  
+    - name: "npm install"                
+    - run: npm install
+    # - run: npm run build --if-present #npm ERR! enoent This is related to npm not being able to find a file.
+    # - run: npm test
+      env:
+        CI: true
+
+# https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-nodejs
+  macos-latest-nodejs:
+    name: "node.js matrix macos-latest 10.15.7"
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: "Get OS X System Version"
+      run: sw_vers  
+    - name: "npm install"                
+    - run: npm install
+    # - run: npm run build --if-present #npm ERR! enoent This is related to npm not being able to find a file.
+    # - run: npm test
+      env:
+        CI: true

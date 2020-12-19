@@ -13,7 +13,7 @@ on:
 jobs:
 
   macos-latest:
-      name: "macos-latest"
+      name: "macos-latest 10.15.7"
       runs-on: macos-latest
       steps:
       - name: Checkout
@@ -40,7 +40,7 @@ jobs:
 
   macos-110:
       name: "macos-11.0"
-      runs-on: macos-11.0
+      runs-on: macos-11.0 # ProductVersion 11.0.1
       steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -66,7 +66,7 @@ jobs:
 
   macos-1015:
       name: "macos-10.15"
-      runs-on: macos-10.15
+      runs-on: macos-10.15 # ProductVersion 10.15.7
       steps:
       - name: Checkout
         uses: actions/checkout@v1
