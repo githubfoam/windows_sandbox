@@ -1,7 +1,7 @@
 # windows_sandbox
 
-Travis (.com) dev branch:
-[![Build Status](https://travis-ci.com/githubfoam/windows_sandbox.svg?branch=master)](https://travis-ci.com/githubfoam/windows_sandbox)  
+Travis (.com) dev branch:  
+[![Build Status](https://travis-ci.com/githubfoam/windows_sandbox.svg?branch=master)](https://travis-ci.com/githubfoam/windows_sandbox)    
 
 github actions :  
 ![os matrix CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/os%20matrix%20CI%20workflow/badge.svg) 
