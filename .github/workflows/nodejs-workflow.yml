@@ -11,7 +11,7 @@ on:
 jobs:
 
 # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-nodejs
-  windows-latest-nodejs:
+  windows-latest-nodejs-job:
     name: "nodejs matrix Microsoft Windows Server 2019 Datacenter"
     runs-on: windows-latest
     strategy:
