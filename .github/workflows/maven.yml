@@ -1,4 +1,4 @@
-name: "Maven CI Workflow"
+name: "maven CI workflow"
 
 on:
   push:

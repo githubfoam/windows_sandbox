@@ -1,7 +1,7 @@
 
 
-name: windows-workflow
-
+# name: windows-workflow
+name: "windows CI workflow"
 
 on:
   push:

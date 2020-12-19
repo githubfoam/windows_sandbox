@@ -1,6 +1,7 @@
 
 
-name: pws
+# name: pws
+name: "poweshell CI workflow"
 
 
 on:

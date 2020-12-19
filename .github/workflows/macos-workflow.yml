@@ -1,6 +1,7 @@
 
 
-name: macos-workflow
+# name: macos-workflow
+name: "macOS CI workflow"
 
 
 on:

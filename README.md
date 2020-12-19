@@ -18,6 +18,8 @@ github actions :
 github actions :  
 [![maven](https://github.com/githubfoam/windows_sandbox/workflows/maven/badge.svg)](https://github.com/githubfoam/windows_sandbox/actions?query=workflow%3A%22maven%22+branch%3Afeature_githubactions)  
 
+![Maven CI Workflow](https://github.com/githubfoam/windows_sandbox/workflows/Maven%20CI%20Workflow/badge.svg)
+
 ~~~
 windows-workflow
 "windows-2019"

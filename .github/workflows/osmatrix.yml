@@ -1,6 +1,7 @@
 
 
-name: osmatrix
+# name: osmatrix
+name: "os matrix CI workflow"
 
 
 on:
