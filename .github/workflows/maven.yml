@@ -2,9 +2,10 @@ name: maven
 
 on:
   push:
-    branches: [ $default-branch ]
-  pull_request:
-    branches: [ $default-branch ]
+    # branches: [ $default-branch ]
+    branches: [ feature_githubactions ]
+  # pull_request:
+  #   branches: [ $default-branch ]
 
 jobs:
   
