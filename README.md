@@ -11,8 +11,11 @@ github actions :
 
 github actions :  
 [![pws](https://github.com/githubfoam/windows_sandbox/workflows/pws/badge.svg)](https://github.com/githubfoam/windows_sandbox/actions?query=workflow%3A%22pws%22+branch%3Afeature_githubactions)  
-~~~
 
+github actions :  
+[![maven](https://github.com/githubfoam/windows_sandbox/workflows/maven/badge.svg)](https://github.com/githubfoam/windows_sandbox/actions?query=workflow%3A%22maven%22+branch%3Afeature_githubactions)  
+
+~~~
 The Windows Build Environment
 https://docs.travis-ci.com/user/reference/windows/
 
