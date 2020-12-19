@@ -27,6 +27,8 @@ github actions :
 github actions :   
 ![python CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/python%20CI%20workflow/badge.svg)
 
+github actions :   
+![Nodejs CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/Nodejs%20CI%20workflow/badge.svg)
 ~~~
 The Windows Build Environment
 https://docs.travis-ci.com/user/reference/windows/
