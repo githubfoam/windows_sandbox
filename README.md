@@ -19,7 +19,13 @@ github actions :
 ![powershell CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/powershell%20CI%20workflow/badge.svg)
 
 github actions :  
-![maven CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/maven%20CI%20workflow/badge.svg)
+![maven CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/maven%20CI%20workflow/badge.svg)    
+
+github actions :   
+![ruby CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/ruby%20CI%20workflow/badge.svg)
+
+github actions :   
+![python CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/python%20CI%20workflow/badge.svg)
 
 ~~~
 The Windows Build Environment

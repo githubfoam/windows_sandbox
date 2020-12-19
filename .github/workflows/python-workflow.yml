@@ -9,6 +9,7 @@ on:
 
 
 jobs:
+
 # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-python
   build-python-package:
     name: "Python package"
@@ -42,7 +43,7 @@ jobs:
 
 # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-python
   build-python-multiple-versions:
-    name: "Using multiple Python versions"
+    name: "Using multiple Python versions ubuntu-18.04"
     runs-on: ubuntu-latest
     strategy:
       matrix:

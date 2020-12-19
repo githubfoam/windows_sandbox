@@ -48,8 +48,10 @@ jobs:
 
 # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-ruby
   ruby-multiple-versions:
-    name: "Testing with multiple versions of Ruby"
-    runs-on: ubuntu-latest
+    name: "Testing with multiple versions of Ruby on ubuntu-18.04"
+    runs-on: ubuntu-latest #ubuntu-18.04
+    name: "Testing with multiple versions of Ruby on ubuntu-18.04"
+    runs-on: ubuntu-18.04
     strategy:
       matrix:
         ruby-version: [2.7.x, 2.6.x, 2.5.x]
@@ -65,7 +67,49 @@ jobs:
     - name: "Install dependencies"
       run: bundle install
     - name: "Run tests"
-      run: bundle exec rake      
+      run: bundle exec rake   
+
+# https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-ruby
+  ruby-multiple-versions-ubuntu-2004-job:
+    name: "Testing with multiple versions of Ruby on ubuntu-20.04"
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        ruby-version: [2.7.x, 2.6.x, 2.5.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby ${{ matrix.ruby-version }}
+    # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
+    # change this to (see https://github.com/ruby/setup-ruby#versioning):
+    # uses: ruby/setup-ruby@v1
+      uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+    - name: "Install dependencies"
+      run: bundle install
+    - name: "Run tests"
+      run: bundle exec rake 
+
+# https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-ruby
+  ruby-multiple-versions-ubuntu-1604-job:
+    name: "Testing with multiple versions of Ruby on ubuntu-16.04"
+    runs-on: ubuntu-16.04
+    strategy:
+      matrix:
+        ruby-version: [2.7.x, 2.6.x, 2.5.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby ${{ matrix.ruby-version }}
+    # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
+    # change this to (see https://github.com/ruby/setup-ruby#versioning):
+    # uses: ruby/setup-ruby@v1
+      uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+    - name: "Install dependencies"
+      run: bundle install
+    - name: "Run tests"
+      run: bundle exec rake  
 
   # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-ruby
   ruby-test-caching:
