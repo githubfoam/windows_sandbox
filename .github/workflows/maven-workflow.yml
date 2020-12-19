@@ -66,5 +66,5 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java }}
-      - name: "Setup java"
-        run: java -cp java HelloWorldApp        
+      # - name: "Setup java"
+      #   run: java -cp java HelloWorldApp        
