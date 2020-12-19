@@ -9,7 +9,8 @@ github actions :
 github actions :  
 [![windows-workflow](https://github.com/githubfoam/windows_sandbox/workflows/windows-workflow/badge.svg)](https://github.com/githubfoam/windows_sandbox/actions?query=workflow%3A%22windows-workflow%22+branch%3Afeature_githubactions)  
 
-
+github actions :  
+[![pws](https://github.com/githubfoam/windows_sandbox/workflows/pws/badge.svg)](https://github.com/githubfoam/windows_sandbox/actions?query=workflow%3A%22pws%22+branch%3Afeature_githubactions)  
 ~~~
 
 The Windows Build Environment
