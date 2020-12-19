@@ -50,8 +50,6 @@ jobs:
   ruby-multiple-versions:
     name: "Testing with multiple versions of Ruby on ubuntu-18.04"
     runs-on: ubuntu-latest #ubuntu-18.04
-    name: "Testing with multiple versions of Ruby on ubuntu-18.04"
-    runs-on: ubuntu-18.04
     strategy:
       matrix:
         ruby-version: [2.7.x, 2.6.x, 2.5.x]
