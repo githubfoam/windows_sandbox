@@ -7,6 +7,9 @@ github actions :
 ![os matrix CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/os%20matrix%20CI%20workflow/badge.svg) 
 
 github actions :  
+![linux ubuntu CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/linux%20ubuntu%20CI%20workflow/badge.svg)  
+
+github actions :  
 ![windows CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/windows%20CI%20workflow/badge.svg) 
 
 github actions :  

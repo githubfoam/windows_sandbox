@@ -1,6 +1,4 @@
 
-
-# name: windows-workflow
 name: "windows CI workflow"
 
 on:
