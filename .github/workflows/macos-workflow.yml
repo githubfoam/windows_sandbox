@@ -1,0 +1,91 @@
+
+
+name: macos-workflow
+
+
+on:
+  push:
+    branches: [ feature_githubactions ]
+  # pull_request:
+  #   branches: [ githubactions_powershell ]
+
+
+jobs:
+
+  macos-latest:
+      name: "macos-latest"
+      runs-on: macos-latest
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: "brew update"
+        run: brew update      
+      - name: "brew upgrade"
+        run: brew upgrade
+      - name: "check on brew version"
+        run: brew --version   #Homebrew 2.5.12   
+      - name: "brew cask list"
+        run:   brew list --cask #Warning: Calling brew cask list is deprecated! Use brew list [--cask] instead.
+      - name: "brew list"
+        run: brew list #List all the installed formulas
+      - name: "Get OS X System Version"
+        run: sw_vers       
+      - name: "Get Mac System Details with system_profiler"
+        run: system_profiler | more  
+      - name: "osfingerprinting"
+        run: uname -a                           
+      # - name: "brew doctor"
+      #   run: |
+      #     brew doctor #Check brew for potential problems 
+
+  macos-110:
+      name: "macos-11.0"
+      runs-on: macos-11.0
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: "brew update"
+        run: brew update      
+      - name: "brew upgrade"
+        run: brew upgrade
+      - name: "check on brew version"
+        run: brew --version   #Homebrew 2.5.12   
+      - name: "brew cask list"
+        run:   brew list --cask #Warning: Calling brew cask list is deprecated! Use brew list [--cask] instead.
+      - name: "brew list"
+        run: brew list #List all the installed formulas
+      - name: "Get OS X System Version"
+        run: sw_vers       
+      - name: "Get Mac System Details with system_profiler"
+        run: system_profiler | more  
+      - name: "osfingerprinting"
+        run: uname -a                           
+      # - name: "brew doctor"
+      #   run: |
+      #     brew doctor #Check brew for potential problems 
+
+  macos-1015:
+      name: "macos-10.15"
+      runs-on: macos-10.15
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: "brew update"
+        run: brew update      
+      - name: "brew upgrade"
+        run: brew upgrade
+      - name: "check on brew version"
+        run: brew --version   #Homebrew 2.5.12   
+      - name: "brew cask list"
+        run:   brew list --cask #Warning: Calling brew cask list is deprecated! Use brew list [--cask] instead.
+      - name: "brew list"
+        run: brew list #List all the installed formulas
+      - name: "Get OS X System Version"
+        run: sw_vers       
+      - name: "Get Mac System Details with system_profiler"
+        run: system_profiler | more  
+      - name: "osfingerprinting"
+        run: uname -a                           
+      # - name: "brew doctor"
+      #   run: |
+      #     brew doctor #Check brew for potential problems 
