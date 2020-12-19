@@ -1,5 +1,5 @@
 
-name: "Node.js CI workflow"
+name: "Nodejs CI workflow"
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
 
 # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-nodejs
   windows-latest-nodejs:
-    name: "node.js matrix Microsoft Windows Server 2019 Datacenter"
+    name: "nodejs matrix Microsoft Windows Server 2019 Datacenter"
     runs-on: windows-latest
     strategy:
       matrix:
@@ -34,7 +34,7 @@ jobs:
 
 # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-nodejs
   ubuntu-latest-nodejs:
-    name: "node.js matrix ubuntu-18.04"
+    name: "nodejs matrix ubuntu-18.04"
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -56,7 +56,7 @@ jobs:
 
 # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-nodejs
   macos-latest-nodejs:
-    name: "node.js matrix macos-latest 10.15.7"
+    name: "nodejs matrix macos-latest 10.15.7"
     runs-on: macos-latest
     strategy:
       matrix:
