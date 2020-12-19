@@ -4,27 +4,20 @@ Travis (.com) dev branch:
 [![Build Status](https://travis-ci.com/githubfoam/windows_sandbox.svg?branch=master)](https://travis-ci.com/githubfoam/windows_sandbox)  
 
 github actions :  
-[![osmatrix](https://github.com/githubfoam/windows_sandbox/workflows/osmatrix/badge.svg)](https://github.com/githubfoam/windows_sandbox/actions?query=workflow%3A%22osmatrix%22+branch%3Afeature_githubactions)  
+![os matrix CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/os%20matrix%20CI%20workflow/badge.svg) 
 
 github actions :  
-[![macos-workflow](https://github.com/githubfoam/windows_sandbox/workflows/macos-workflow/badge.svg)](https://github.com/githubfoam/windows_sandbox/actions?query=workflow%3A%22macos-workflow%22+branch%3Afeature_githubactions)  
+![windows CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/windows%20CI%20workflow/badge.svg) 
 
 github actions :  
-[![windows-workflow](https://github.com/githubfoam/windows_sandbox/workflows/windows-workflow/badge.svg)](https://github.com/githubfoam/windows_sandbox/actions?query=workflow%3A%22windows-workflow%22+branch%3Afeature_githubactions)  
+![macOS CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/macOS%20CI%20workflow/badge.svg)
 
 github actions :  
-[![pws](https://github.com/githubfoam/windows_sandbox/workflows/pws/badge.svg)](https://github.com/githubfoam/windows_sandbox/actions?query=workflow%3A%22pws%22+branch%3Afeature_githubactions)  
+![powershell CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/powershell%20CI%20workflow/badge.svg)
 
 github actions :  
-[![maven](https://github.com/githubfoam/windows_sandbox/workflows/maven/badge.svg)](https://github.com/githubfoam/windows_sandbox/actions?query=workflow%3A%22maven%22+branch%3Afeature_githubactions)  
+![maven CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/maven%20CI%20workflow/badge.svg)
 
-![Maven CI Workflow](https://github.com/githubfoam/windows_sandbox/workflows/Maven%20CI%20Workflow/badge.svg)
-
-~~~
-windows-workflow
-"windows-2019"
-"windows-2016"   
-~~~
 ~~~
 The Windows Build Environment
 https://docs.travis-ci.com/user/reference/windows/
