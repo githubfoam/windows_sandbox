@@ -21,8 +21,10 @@ github actions :
 github actions :  
 ![maven CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/maven%20CI%20workflow/badge.svg)  
 
+github actions :   
 ![ant CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/ant%20CI%20workflow/badge.svg)
 
+github actions :   
 ![gradle CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/gradle%20CI%20workflow/badge.svg)  
 
 github actions :   
@@ -33,9 +35,6 @@ github actions :
 
 github actions :   
 ![Nodejs CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/Nodejs%20CI%20workflow/badge.svg)  
-
-
-
 
 ~~~
 The Windows Build Environment
