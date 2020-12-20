@@ -1,0 +1,220 @@
+name: "CMake os matrix CI workflow"
+
+
+on:
+  push:
+    branches: [ feature_githubactions ]
+  # pull_request:
+  #   branches: [ githubactions_powershell ]
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+
+    # The CMake configure and build commands are platform agnostic and should work equally
+    # well on Windows or Mac.  You can convert this to a matrix build if you need
+    # cross-platform coverage.
+  ubuntu-job:
+    name: "ubuntu-latest"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: "Create Build Environment"
+      # Some projects don't allow in-source building, so create a separate build directory
+      # We'll use this as our working directory for all subsequent commands
+      run: cmake -E make_directory ${{runner.workspace}}/build
+    - name: "Configure CMake"
+      # Use a bash shell so we can use the same syntax for environment variable
+      # access regardless of the host operating system
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+      # Note the current convention is to use the -S and -B options here to specify source 
+      # and build directories, but this is only available with CMake 3.13 and higher.  
+      # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+    - name: "Build"
+      working-directory: ${{runner.workspace}}/build
+      shell: bash
+      # Execute the build.  You can specify a specific target with "--target <NAME>"
+      run: cmake --build . --config $BUILD_TYPE
+    - name: "Test"
+      working-directory: ${{runner.workspace}}/build
+      shell: bash
+      # Execute tests defined by the CMake configuration.  
+      # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
+      run: ctest -C $BUILD_TYPE  
+
+  # ubuntu-1604-job:
+  #   name: "ubuntu-16.04"
+  #   runs-on: ubuntu-16.04
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: "os fingerprinting"
+  #     run: hostnamectl status  
+
+  # ubuntu-1804-job:
+  #   name: "ubuntu-18.04"
+  #   runs-on: ubuntu-18.04
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: "os fingerprinting"
+  #     run: hostnamectl status  
+
+  # ubuntu-2004-job:
+  #   name: "ubuntu-20.04"
+  #   runs-on: ubuntu-20.04
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: "os fingerprinting"
+  #     run: hostnamectl status 
+
+
+  # macos-latest:
+  #     name: "macos-latest 10.15.7"
+  #     runs-on: macos-latest
+  #     steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v1
+  #     - name: "brew update"
+  #       run: brew update      
+  #     # - name: "brew upgrade"
+  #     #   run: brew upgrade
+  #     - name: "check on brew version"
+  #       run: brew --version   #Homebrew 2.5.12   
+  #     - name: "brew cask list"
+  #       run:   brew list --cask #Warning: Calling brew cask list is deprecated! Use brew list [--cask] instead.
+  #     - name: "brew list"
+  #       run: brew list #List all the installed formulas
+  #     - name: "Get OS X System Version"
+  #       run: sw_vers       
+  #     - name: "Get Mac System Details with system_profiler"
+  #       run: system_profiler | more  
+  #     - name: "osfingerprinting"
+  #       run: uname -a                           
+  #     # - name: "brew doctor"
+  #     #   run: |
+  #     #     brew doctor #Check brew for potential problems 
+
+  # macos-110:
+  #     name: "macos-11.0"
+  #     runs-on: macos-11.0 # ProductVersion 11.0.1
+  #     steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v1
+  #     - name: "brew update"
+  #       run: brew update      
+  #     # - name: "brew upgrade"
+  #     #   run: brew upgrade
+  #     - name: "check on brew version"
+  #       run: brew --version   #Homebrew 2.5.12   
+  #     - name: "brew cask list"
+  #       run:   brew list --cask #Warning: Calling brew cask list is deprecated! Use brew list [--cask] instead.
+  #     - name: "brew list"
+  #       run: brew list #List all the installed formulas
+  #     - name: "Get OS X System Version"
+  #       run: sw_vers       
+  #     - name: "Get Mac System Details with system_profiler"
+  #       run: system_profiler | more  
+  #     - name: "osfingerprinting"
+  #       run: uname -a                           
+  #     # - name: "brew doctor"
+  #     #   run: |
+  #     #     brew doctor #Check brew for potential problems 
+
+  # macos-1015:
+  #     name: "macos-10.15"
+  #     runs-on: macos-10.15 # ProductVersion 10.15.7
+  #     steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v1
+  #     - name: "brew update"
+  #       run: brew update      
+  #     # - name: "brew upgrade"
+  #     #   run: brew upgrade
+  #     - name: "check on brew version"
+  #       run: brew --version   #Homebrew 2.5.12   
+  #     - name: "brew cask list"
+  #       run:   brew list --cask #Warning: Calling brew cask list is deprecated! Use brew list [--cask] instead.
+  #     - name: "brew list"
+  #       run: brew list #List all the installed formulas
+  #     - name: "Get OS X System Version"
+  #       run: sw_vers       
+  #     - name: "Get Mac System Details with system_profiler"
+  #       run: system_profiler | more  
+  #     - name: "osfingerprinting"
+  #       run: uname -a                           
+  #     # - name: "brew doctor"
+  #     #   run: |
+  #     #     brew doctor #Check brew for potential problems 
+
+
+  # windows-latest:
+  #   name: "windows-latest Microsoft Windows Server 2019 Datacenter"  
+  #   runs-on: windows-latest
+  #   steps:
+  #   - name: Checkout
+  #     uses: actions/checkout@v1
+  #   - name: "check if server is virtual"
+  #     run: Systeminfo | findstr /i model   
+  #   - name: "check the PROCESSOR_ARCHITECTURE environment variable.64-bit systems will say AMD64 and 32-bit systems should say x86"
+  #     run: wmic OS get OSArchitecture     
+  #   - name: "osfingerprinting"
+  #     run: systeminfo | more  
+  #   - name: "display all processes, executable path"
+  #     run: wmic process list full         
+  #   - name: "list of running services"
+  #     run: tasklist         
+  #   - name: "list of all processes along with their corresponding PID, and services that are tied to them"
+  #     run: tasklist /svc  
+  #   - name: "look for unusual services"
+  #     run: net start                       
+  #   - name: "query unusual services"
+  #     run: sc query  
+
+  # windows-2019: 
+  #   name: "Microsoft Windows Server 2019 Datacenter"
+  #   runs-on: windows-2019
+  #   steps:
+  #   - name: Checkout
+  #     uses: actions/checkout@v1
+  #   - name: "check if server is virtual"
+  #     run: Systeminfo | findstr /i model   
+  #   - name: "check the PROCESSOR_ARCHITECTURE environment variable.64-bit systems will say AMD64 and 32-bit systems should say x86"
+  #     run: wmic OS get OSArchitecture     
+  #   - name: "osfingerprinting"
+  #     run: systeminfo | more  
+  #   - name: "display all processes, executable path"
+  #     run: wmic process list full         
+  #   - name: "list of running services"
+  #     run: tasklist         
+  #   - name: "list of all processes along with their corresponding PID, and services that are tied to them"
+  #     run: tasklist /svc  
+  #   - name: "look for unusual services"
+  #     run: net start                       
+  #   - name: "query unusual services"
+  #     run: sc query 
+
+  # windows-2016:
+  #   name: "Microsoft Windows Server 2016 Datacenter"
+  #   runs-on: windows-2016
+  #   steps:
+  #   - name: Checkout
+  #     uses: actions/checkout@v1
+  #   - name: "check if server is virtual"
+  #     run: Systeminfo | findstr /i model   
+  #   - name: "check the PROCESSOR_ARCHITECTURE environment variable.64-bit systems will say AMD64 and 32-bit systems should say x86"
+  #     run: wmic OS get OSArchitecture     
+  #   - name: "osfingerprinting"
+  #     run: systeminfo | more  
+  #   - name: "display all processes, executable path"
+  #     run: wmic process list full         
+  #   - name: "list of running services"
+  #     run: tasklist         
+  #   - name: "list of all processes along with their corresponding PID, and services that are tied to them"
+  #     run: tasklist /svc  
+  #   - name: "look for unusual services"
+  #     run: net start                       
+  #   - name: "query unusual services"
+  #     run: sc query      

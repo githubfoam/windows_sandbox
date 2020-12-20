@@ -1,4 +1,4 @@
-name: "python CI workflow"
+name: "python app CI workflow"
 
 
 on:

@@ -1,0 +1,89 @@
+
+name: "MSBuild CI workflow"
+
+on:
+  push:
+    branches: [ feature_githubactions ]
+  # pull_request:
+  #   branches: [ githubactions_powershell ]
+
+env:
+  # Path to the solution file relative to the root of the project.
+  SOLUTION_FILE_PATH: .
+
+  # Configuration type to build.
+  # You can convert this to a build matrix if you need coverage of multiple configuration types.
+  # https://docs.github.com/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+  BUILD_CONFIGURATION: Release
+
+
+jobs:
+
+  windows-latest:
+    name: "windows-latest Microsoft Windows Server 2019 Datacenter"  
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: "check if server is virtual"
+      run: Systeminfo | findstr /i model   
+    - name: "check the PROCESSOR_ARCHITECTURE environment variable.64-bit systems will say AMD64 and 32-bit systems should say x86"
+      run: wmic OS get OSArchitecture     
+    - name: "osfingerprinting"
+      run: systeminfo | more      
+    - name: "Add MSBuild to PATH"
+      uses: microsoft/setup-msbuild@v1
+    - name: "Restore NuGet packages"
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: nuget restore ${{env.SOLUTION_FILE_PATH}}
+    - name: "Build"
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      # Add additional options to the MSBuild command line here (like platform or verbosity level).
+      # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
+      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}} 
+ 
+
+  windows-2019: 
+    name: "Microsoft Windows Server 2019 Datacenter"
+    runs-on: windows-2019
+    steps:
+    - uses: actions/checkout@v2
+    - name: "check if server is virtual"
+      run: Systeminfo | findstr /i model   
+    - name: "check the PROCESSOR_ARCHITECTURE environment variable.64-bit systems will say AMD64 and 32-bit systems should say x86"
+      run: wmic OS get OSArchitecture     
+    - name: "osfingerprinting"
+      run: systeminfo | more      
+    - name: "Add MSBuild to PATH"
+      uses: microsoft/setup-msbuild@v1
+    - name: "Restore NuGet packages"
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: nuget restore ${{env.SOLUTION_FILE_PATH}}
+    - name: "Build"
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      # Add additional options to the MSBuild command line here (like platform or verbosity level).
+      # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
+      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}} 
+ 
+
+  windows-2016:
+    name: "Microsoft Windows Server 2016 Datacenter"
+    runs-on: windows-2016
+    steps:
+    - uses: actions/checkout@v2
+    - name: "check if server is virtual"
+      run: Systeminfo | findstr /i model   
+    - name: "check the PROCESSOR_ARCHITECTURE environment variable.64-bit systems will say AMD64 and 32-bit systems should say x86"
+      run: wmic OS get OSArchitecture     
+    - name: "osfingerprinting"
+      run: systeminfo | more      
+    - name: "Add MSBuild to PATH"
+      uses: microsoft/setup-msbuild@v1
+    - name: "Restore NuGet packages"
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: nuget restore ${{env.SOLUTION_FILE_PATH}}
+    - name: "Build"
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      # Add additional options to the MSBuild command line here (like platform or verbosity level).
+      # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
+      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}} 
+  

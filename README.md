@@ -36,6 +36,8 @@ github actions :
 github actions :   
 ![Nodejs CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/Nodejs%20CI%20workflow/badge.svg)  
 
+github actions :   
+![scala CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/scala%20CI%20workflow/badge.svg)
 ~~~
 The Windows Build Environment
 https://docs.travis-ci.com/user/reference/windows/
