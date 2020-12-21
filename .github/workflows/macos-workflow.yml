@@ -40,7 +40,7 @@ jobs:
 
   macos-110:
       name: "macos-11.0"
-      runs-on: macos-11.0 # ProductVersion 11.0.1
+      runs-on: macos-11.0 # ProductVersion 11.0.1 macOS Big Sur
       steps:
       - name: Checkout
         uses: actions/checkout@v1
