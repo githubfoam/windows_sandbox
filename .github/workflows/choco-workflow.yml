@@ -22,7 +22,10 @@ jobs:
     - name: "install the latest pre-release version of Chocolatey GUI" # https://github.com/chocolatey/ChocolateyGUI
       run: choco install chocolateygui --source https://www.myget.org/F/chocolateygui/ --pre       
     - name: "install osquery" #https://chocolatey.org/packages/osquery/
-      run: choco install osquery   
+      run: choco install osquery  
+    - name: "Close/reopen your shell to see the changes" 
+      run: refreshenv
+      shell: cmd         
     - name: "Running osquery using cmd.exe" #https://osquery.readthedocs.io/en/stable/installation/install-windows/#running-osquery
       run: sc.exe start osqueryd
       shell: cmd               
@@ -55,6 +58,9 @@ jobs:
       run: choco install chocolateygui --source https://www.myget.org/F/chocolateygui/ --pre       
     - name: "install osquery" #https://chocolatey.org/packages/osquery/
       run: choco install osquery   
+    - name: "Close/reopen your shell to see the changes" 
+      run: refreshenv
+      shell: pwsh        
     - name: "Running osquery using Powershell" #https://osquery.readthedocs.io/en/stable/installation/install-windows/#running-osquery
       run: Start-Service osqueryd
       shell: pwsh               
