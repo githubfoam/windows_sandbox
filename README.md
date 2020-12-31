@@ -1,8 +1,15 @@
 # windows_sandbox
 
+Chocolatey GUI is a user interface for Chocolatey (the Machine Package Manager for Windows).
+https://github.com/chocolatey/ChocolateyGUI
+
+choco install osquery
+https://chocolatey.org/packages/osquery/
+
 ~~~
-The Windows Build Environment
-https://docs.travis-ci.com/user/reference/windows/
+
+Using a specific shell
+https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#using-a-specific-shell
 
 https://scoop.sh/
 
