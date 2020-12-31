@@ -10,6 +10,39 @@ on:
 
 jobs:
 
+# https://github.com/google/grr/blob/master/appveyor/windows_templates/install_for_build.bat
+  windows-latest:
+    name: "GRR Rapid Response: remote live forensics for incident response  windows-latest Microsoft Windows Server 2019 Datacenter "  
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: "Close/reopen your shell to see the changes" 
+      run: |
+          echo Installing GRR dependencies
+          mkdir C:\grr_deps || echo "Failed to create C:\grr_deps" && exit /b 1
+      # shell: pwsh        
+    # - name: "Running osquery using Powershell" #https://osquery.readthedocs.io/en/stable/installation/install-windows/#running-osquery
+    #   run: Start-Service osqueryd
+    #   shell: pwsh 
+
+    - name: "check if server is virtual"
+      run: Systeminfo | findstr /i model   
+    - name: "check the PROCESSOR_ARCHITECTURE environment variable.64-bit systems will say AMD64 and 32-bit systems should say x86"
+      run: wmic OS get OSArchitecture     
+    - name: "osfingerprinting"
+      run: systeminfo | more  
+    - name: "display all processes, executable path"
+      run: wmic process list full         
+    - name: "list of running services"
+      run: tasklist         
+    - name: "list of all processes along with their corresponding PID, and services that are tied to them"
+      run: tasklist /svc  
+    - name: "look for unusual services"
+      run: net start                       
+    - name: "query unusual services"
+      run: sc query 
 
   windows-latest-cmd:
     name: "windows-latest Microsoft Windows Server 2019 Datacenter cmd"  
