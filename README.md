@@ -5,6 +5,19 @@ https://github.com/chocolatey/ChocolateyGUI
 
 choco install osquery
 https://chocolatey.org/packages/osquery/
+https://osquery.io/
+
+Sysmon
+https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon
+
+GRR Rapid Response: remote live forensics for incident response
+https://github.com/google/grr
+
+https://www.systemtools.com/hyena/
+
+https://sectools.org/tag/fuzzers/
+
+https://github.com/malwareinfosec/EKFiddle
 
 ~~~
 
