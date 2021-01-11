@@ -19,6 +19,8 @@ https://sectools.org/tag/fuzzers/
 
 https://github.com/malwareinfosec/EKFiddle
 
+Debugging Tools for Windows 10 (WinDbg)
+https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/debugger-download-tools
 ~~~
 
 Using a specific shell
