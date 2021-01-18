@@ -1,5 +1,6 @@
 # windows_sandbox
 
+~~~
 Chocolatey GUI is a user interface for Chocolatey (the Machine Package Manager for Windows).
 https://github.com/chocolatey/ChocolateyGUI
 
@@ -21,8 +22,10 @@ https://github.com/malwareinfosec/EKFiddle
 
 Debugging Tools for Windows 10 (WinDbg)
 https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/debugger-download-tools
-~~~
 
+
+~~~
+~~~
 Using a specific shell
 https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#using-a-specific-shell
 
