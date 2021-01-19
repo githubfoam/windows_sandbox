@@ -15,21 +15,14 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    # # https://github.com/chocolatey/ChocolateyGUI      
-    # - name: "Install Chocolatey GUI" 
-    #   run: choco install ChocolateyGUI     
-    # # https://github.com/chocolatey/ChocolateyGUI      
-    # - name: "Install the latest pre-release version of Chocolatey GUI" 
-    #   run: choco install chocolateygui --source https://www.myget.org/F/chocolateygui/ --pre       
-    #https://chocolatey.org/packages/osquery/
+
     - name: "Install osquery" 
       run: choco install osquery   
     - name: "Close/reopen your shell to see the changes" 
-      run: |
-          refreshenv
-          Start-Service osqueryd
+      run: refreshenv
       shell: pwsh        
-    # - name: "Running osquery using Powershell" #https://osquery.readthedocs.io/en/stable/installation/install-windows/#running-osquery
+    #https://osquery.readthedocs.io/en/stable/installation/install-windows/#running-osquery      
+    # - name: "Running osquery using Powershell" 
     #   run: Start-Service osqueryd
     #   shell: pwsh               
     - name: "check if server is virtual"
