@@ -41,7 +41,10 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v1   
+      uses: actions/checkout@v1  
+      # Unable to resolve dependency 'dotnet4.5.2 (≥ 4.5.2.20140902)' 
+    - name: "Install dependency" 
+      run: choco install dotnet4.5.2
     # https://github.com/chocolatey/ChocolateyGUI      
     - name: "Install the latest pre-release version of Chocolatey GUI" 
       run: choco install chocolateygui --source https://www.myget.org/F/chocolateygui/ --pre       
