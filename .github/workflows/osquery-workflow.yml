@@ -1,5 +1,5 @@
 
-name: "Chocolatey CI workflow"
+name: "Osquery CI workflow"
 
 on:
   push:
@@ -19,11 +19,15 @@ jobs:
     - name: "Install osquery" #https://chocolatey.org/packages/osquery/
       run: choco install osquery  
     - name: "Close/reopen your shell to see the changes" 
-      run: |
-          refreshenv
-          sc.exe start osqueryd
+      run: refreshenv
       shell: cmd         
-    - name: "Running osquery using cmd.exe" #https://osquery.readthedocs.io/en/stable/installation/install-windows/#running-osquery
+    # - name: "Close/reopen your shell to see the changes" 
+    #   run: |
+    #       refreshenv
+    #       sc.exe start osqueryd
+    #   shell: cmd         
+    #https://osquery.readthedocs.io/en/stable/installation/install-windows/#running-osquery
+    - name: "Running osquery using cmd.exe" 
       run: sc.exe start osqueryd
       shell: cmd               
     - name: "check if server is virtual"
@@ -50,11 +54,21 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - name: "Install osquery" #https://chocolatey.org/packages/osquery/
+    #https://chocolatey.org/packages/osquery/      
+    - name: "Install osquery" 
       run: choco install osquery   
     - name: "Close/reopen your shell to see the changes" 
       run: refreshenv          
-      shell: pwsh                        
+      shell: pwsh  
+    # - name: "Close/reopen your shell to see the changes" 
+    #   run: |
+    #       refreshenv
+    #       Start-Service osqueryd
+    #   shell: pwsh        
+    #https://osquery.readthedocs.io/en/stable/installation/install-windows/#running-osquery    
+    - name: "Running osquery using Powershell" 
+      run: Start-Service osqueryd
+      shell: pwsh                             
     - name: "check if server is virtual"
       run: Systeminfo | findstr /i model   
     - name: "check the PROCESSOR_ARCHITECTURE environment variable.64-bit systems will say AMD64 and 32-bit systems should say x86"
@@ -79,14 +93,16 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - name: "Install osquery" #https://chocolatey.org/packages/osquery/
+    #https://chocolatey.org/packages/osquery/      
+    - name: "Install osquery" 
       run: choco install osquery  
-    - name: "Close/reopen your shell to see the changes" 
-      run: |
-          refreshenv
-          sc.exe start osqueryd
-      shell: cmd         
-    - name: "Running osquery using cmd.exe" #https://osquery.readthedocs.io/en/stable/installation/install-windows/#running-osquery
+    # - name: "Close/reopen your shell to see the changes" 
+    #   run: |
+    #       refreshenv
+    #       sc.exe start osqueryd
+    #   shell: cmd         
+    #https://osquery.readthedocs.io/en/stable/installation/install-windows/#running-osquery
+    - name: "Running osquery using cmd.exe" 
       run: sc.exe start osqueryd
       shell: cmd        
     - name: "check if server is virtual"
@@ -114,7 +130,11 @@ jobs:
       uses: actions/checkout@v1
     - name: "Close/reopen your shell to see the changes" 
       run: refreshenv          
-      shell: pwsh       
+      shell: pwsh    
+      #https://osquery.readthedocs.io/en/stable/installation/install-windows/#running-osquery      
+    - name: "Running osquery using Powershell" 
+      run: Start-Service osqueryd
+      shell: pwsh          
     - name: "check if server is virtual"
       run: Systeminfo | findstr /i model   
     - name: "check the PROCESSOR_ARCHITECTURE environment variable.64-bit systems will say AMD64 and 32-bit systems should say x86"
