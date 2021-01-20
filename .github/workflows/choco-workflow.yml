@@ -16,7 +16,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - name: "install Chocolatey GUI" # https://github.com/chocolatey/ChocolateyGUI
+    # https://github.com/chocolatey/ChocolateyGUI
+    - name: "Install Chocolatey GUI" 
       run: choco install ChocolateyGUI     
     - name: "check if server is virtual"
       run: Systeminfo | findstr /i model   
@@ -40,10 +41,9 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v1
-    # - name: "install Chocolatey GUI" # https://github.com/chocolatey/ChocolateyGUI
-    #   run: choco install ChocolateyGUI     
-    - name: "install the latest pre-release version of Chocolatey GUI" # https://github.com/chocolatey/ChocolateyGUI
+      uses: actions/checkout@v1   
+    # https://github.com/chocolatey/ChocolateyGUI      
+    - name: "Install the latest pre-release version of Chocolatey GUI" 
       run: choco install chocolateygui --source https://www.myget.org/F/chocolateygui/ --pre       
     - name: "check if server is virtual"
       run: Systeminfo | findstr /i model   
