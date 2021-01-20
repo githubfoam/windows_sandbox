@@ -10,22 +10,41 @@ on:
 
 jobs:
 
-  windows-latest-pwsh-osquery:
+  windows-latest-pwsh-chocogui:
     name: "windows-latest Microsoft Windows Server 2019 Datacenter pwsh"  
     runs-on: windows-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v1
+    - name: "install Chocolatey GUI" # https://github.com/chocolatey/ChocolateyGUI
+      run: choco install ChocolateyGUI     
+    - name: "check if server is virtual"
+      run: Systeminfo | findstr /i model   
+    - name: "check the PROCESSOR_ARCHITECTURE environment variable.64-bit systems will say AMD64 and 32-bit systems should say x86"
+      run: wmic OS get OSArchitecture     
+    - name: "osfingerprinting"
+      run: systeminfo | more  
+    - name: "display all processes, executable path"
+      run: wmic process list full         
+    - name: "list of running services"
+      run: tasklist         
+    - name: "list of all processes along with their corresponding PID, and services that are tied to them"
+      run: tasklist /svc  
+    - name: "look for unusual services"
+      run: net start                       
+    - name: "query unusual services"
+      run: sc query 
 
-    - name: "Install osquery" 
-      run: choco install osquery   
-    - name: "Close/reopen your shell to see the changes" 
-      run: refreshenv
-      shell: pwsh        
-    #https://osquery.readthedocs.io/en/stable/installation/install-windows/#running-osquery      
-    # - name: "Running osquery using Powershell" 
-    #   run: Start-Service osqueryd
-    #   shell: pwsh               
+  windows-latest-pwsh-chocoguipre:
+    name: "windows-latest Microsoft Windows Server 2019 Datacenter pwsh"  
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    # - name: "install Chocolatey GUI" # https://github.com/chocolatey/ChocolateyGUI
+    #   run: choco install ChocolateyGUI     
+    - name: "install the latest pre-release version of Chocolatey GUI" # https://github.com/chocolatey/ChocolateyGUI
+      run: choco install chocolateygui --source https://www.myget.org/F/chocolateygui/ --pre       
     - name: "check if server is virtual"
       run: Systeminfo | findstr /i model   
     - name: "check the PROCESSOR_ARCHITECTURE environment variable.64-bit systems will say AMD64 and 32-bit systems should say x86"
