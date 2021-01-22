@@ -6,7 +6,9 @@
 
 ![Osquery CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/Osquery%20CI%20workflow/badge.svg?branch=master)  
 
-![os matrix CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/os%20matrix%20CI%20workflow/badge.svg?branch=master)  
+![os matrix CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/os%20matrix%20CI%20workflow/badge.svg?branch=master)   
+
+
 ~~~
 Chocolatey GUI is a user interface for Chocolatey (the Machine Package Manager for Windows).
 https://github.com/chocolatey/ChocolateyGUI
