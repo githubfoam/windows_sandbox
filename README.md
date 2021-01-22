@@ -1,5 +1,7 @@
 # windows_sandbox
 
+![powershell CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/powershell%20CI%20workflow/badge.svg?branch=feature_githubactions)
+
 ~~~
 Chocolatey GUI is a user interface for Chocolatey (the Machine Package Manager for Windows).
 https://github.com/chocolatey/ChocolateyGUI
