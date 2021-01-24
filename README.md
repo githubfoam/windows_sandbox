@@ -14,6 +14,9 @@ PSGallery
 PSScriptAnalyzer  
 ![powershell CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/powershell%20CI%20workflow/badge.svg?branch=master)  
 
+Publishing using Apache Maven  
+OS matrix with java version  
+![maven CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/maven%20CI%20workflow/badge.svg?branch=master)  
 
 ~~~
 Chocolatey GUI is a user interface for Chocolatey (the Machine Package Manager for Windows).
