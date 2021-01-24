@@ -1,11 +1,11 @@
 name: "maven CI workflow"
 
 on:
-  push:
-    # branches: [ $default-branch ]
-    branches: [ test ]
-  # pull_request:
-  #   branches: [ $default-branch ]
+  push:    
+    branches: [ master ]
+  schedule:
+      - cron:  '0 0 1 * *' ##execution of a task in the first minute of the month
+
 
 jobs:
   
