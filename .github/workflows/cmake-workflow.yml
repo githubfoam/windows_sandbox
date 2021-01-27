@@ -3,9 +3,9 @@ name: "CMake os matrix CI workflow"
 
 on:
   push:
-    branches: [ test ]
-  # pull_request:
-  #   branches: [ githubactions_powershell ]
+    branches: [ master ]
+  schedule:
+      - cron:  '0 0 1 * *' ##execution of a task in the first minute of the month
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
