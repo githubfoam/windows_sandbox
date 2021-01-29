@@ -1,4 +1,4 @@
-name: "CMake os matrix CI workflow"
+name: "CMake CI workflow"
 
 
 on:
