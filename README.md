@@ -24,9 +24,6 @@ os matrix
 os matrix  
 ![CMake CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/CMake%20CI%20workflow/badge.svg?branch=master)  
 
-Ubuntu  
-![C/C++ CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/C/C++%20CI%20workflow/badge.svg?branch=master)
-
 ~~~
 Chocolatey GUI is a user interface for Chocolatey (the Machine Package Manager for Windows).
 https://github.com/chocolatey/ChocolateyGUI
