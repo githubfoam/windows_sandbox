@@ -71,6 +71,8 @@ Wapiti allows you to audit the security of your web applications
 https://sectools.org/tag/fuzzers/
 An extension for the original Fiddler web debugger to analyze malicious web traffic
 https://github.com/malwareinfosec/EKFiddle
+Burp Suite Community Edition,manual tools for exploring web security. Proxy your HTTPS traffic, edit and repeat requests, decode data
+https://portswigger.net/burp/communitydownload
 ~~~
 ~~~
 cpu_rec is a tool that recognizes cpu instructions in an arbitrary binary file. It can be used as a standalone tool, or as a plugin for binwalk
