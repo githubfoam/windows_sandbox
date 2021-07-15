@@ -19,7 +19,10 @@ jobs:
       shell: pwsh    
     - name: "test verbose" 
       run: .\scripts\Test_Verbose.ps1
-      shell: pwsh            
+      shell: pwsh    
+    - name: "Windows Version" 
+      run: .\scripts\Windows_Versionps1
+      shell: pwsh               
     # - name: "Close/reopen your shell to see the changes" 
     #   run: |
     #       refreshenv
