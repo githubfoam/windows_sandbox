@@ -9,6 +9,9 @@
 
 Write-Output $VerbosePreference
 
+$VerbosePreference = "continue"
+Write-Verbose "verbose output"
+
 # Path for the Workdir
 $workdir = "C:\tmp\"
 
