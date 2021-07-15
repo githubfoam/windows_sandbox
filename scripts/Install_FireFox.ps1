@@ -26,6 +26,27 @@ ELSE
 $source = "https://download.mozilla.org/?product=firefox-51.0.1-SSL&os=win64&lang=en-US"
 $destination = "$workdir\firefox.exe"
 
-Write-Host "destination dir: $destination"
+# Check if Invoke-Webrequest exists otherwise execute WebClient
 
+if (Get-Command 'Invoke-Webrequest')
+{
+     Invoke-WebRequest $source -OutFile $destination
+}
+else
+{
+    $WebClient = New-Object System.Net.WebClient
+    $webclient.DownloadFile($source, $destination)
+}
+
+# Start the installation
+
+Start-Process -FilePath "$workdir\firefox.exe" -ArgumentList "/S"
+
+# Wait few Seconds for the installation to finish
+
+Start-Sleep -s 45
+
+# Remove the installer
+
+Remove-Item -Force $workdir\firefox* 
 
