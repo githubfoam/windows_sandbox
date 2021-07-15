@@ -4,8 +4,6 @@ name: "windows CI workflow"
 on:
   push:
     branches: [ feature_win ]
-  # pull_request:
-  #   branches: [ githubactions_powershell ]
 
 
 jobs:
