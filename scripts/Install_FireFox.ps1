@@ -22,8 +22,8 @@ ELSE
 
 # Download the installer     
 
-# $source = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"           
-$source = "https://download.mozilla.org/?product=firefox-51.0.1-SSL&os=win64&lang=en-US"
+$source = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"           
+# $source = "https://download.mozilla.org/?product=firefox-51.0.1-SSL&os=win64&lang=en-US"
 $destination = "$workdir\firefox.exe"
 
 # Check if Invoke-Webrequest exists otherwise execute WebClient
@@ -45,6 +45,10 @@ Start-Process -FilePath "$workdir\firefox.exe" -ArgumentList "/S"
 # Wait few Seconds for the installation to finish
 
 Start-Sleep -s 45
+
+# Firefox version
+$FFInstalled = (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Mozilla\Mozilla Firefox' | Select 'CurrentVersion').CurrentVersion
+$FFInstalled| Write-Output
 
 # Remove the installer
 
