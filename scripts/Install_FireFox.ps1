@@ -5,9 +5,9 @@
 #--------------------------------------------------------------------------------------------------------
 
 # https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/set-psdebug?view=powershell-7.1
-Get-PSDepth
-Set-PSDebug -Trace 2 #turns script debugging features on and off, sets the trace level
-Get-PSDepth
+# Set-PSDebug -Trace 2 #turns script debugging features on and off, sets the trace level
+
+Write-Output $VerbosePreference
 
 # Path for the Workdir
 $workdir = "C:\tmp\"
@@ -19,13 +19,11 @@ If (Test-Path -Path $workdir -PathType Container)
 ELSE
 { New-Item -Path $workdir  -ItemType directory }
 
-dir $workdir
-
 # Download the installer
 
-           
+          
 # $source = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"           
 $source = "https://download.mozilla.org/?product=firefox-51.0.1-SSL&os=win64&lang=en-US"
 $destination = "$workdir\firefox.exe"
 
-dir $workdir
+
