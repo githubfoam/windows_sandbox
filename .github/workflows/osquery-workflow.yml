@@ -3,9 +3,9 @@ name: "Osquery CI workflow"
 
 on:
   push:
-    branches: [ feature_win ]
-  # pull_request:
-  #   branches: [ githubactions_powershell ]
+    branches: [ master ]
+  schedule:
+      - cron:  '0 0 1 * *' ##execution of a task in the first minute of the month
 
 
 jobs:
