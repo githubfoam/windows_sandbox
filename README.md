@@ -98,3 +98,17 @@ https://github.com/rgl/windows-vagrant
 GitHub’s official command line tool
 https://github.com/cli/cli
 ~~~
+office365
+~~~
+https://github.com/eshlomo1/Microsoft-365-for-IT-and-Security
+https://github.com/Vet-2-tech/Office365-Security-Compliance-Screen-Scrapping-Checklist
+https://github.com/cscannell-inacloud/Office365-Security-Docs/tree/AndreaBarr-patch-1/SecurityCompliance
+https://github.com/diogo-fernan/powershell-ad-office365
+Elastic Beat for fetching and shipping Office 365 audit events 
+https://github.com/counteractive/o365beat
+https://github.com/londonc/LMC-PSC
+Gets events from the Office 365 unified audit log and outputs their details into the pipeline
+https://github.com/counteractive/Get-UnifiedAuditLog
+Enumerate valid usernames from Office 365 using ActiveSync, Autodiscover v1, or office.com login page
+https://github.com/gremwell/o365enum
+~~~
