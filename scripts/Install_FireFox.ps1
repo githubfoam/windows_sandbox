@@ -14,4 +14,13 @@ If (Test-Path -Path $workdir -PathType Container)
 ELSE
 { New-Item -Path $workdir  -ItemType directory }
 
-dir 
+dir $workdir
+
+# Download the installer
+
+           
+# $source = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"           
+$source = "https://download.mozilla.org/?product=firefox-51.0.1-SSL&os=win64&lang=en-US"
+$destination = "$workdir\firefox.exe"
+
+dir $workdir
