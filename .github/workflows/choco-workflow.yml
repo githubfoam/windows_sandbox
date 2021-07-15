@@ -9,14 +9,12 @@ on:
 
 jobs:
 
-  windows-latest-pwsh-chocogui:
+  windows-latest-pwsh-choco:
     name: "windows-latest Microsoft Windows Server 2019 Datacenter pwsh"  
     runs-on: windows-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - name: "install Chocolatey GUI" # https://github.com/chocolatey/ChocolateyGUI
-      run: choco install ChocolateyGUI     
     - name: "check if server is virtual"
       run: Systeminfo | findstr /i model   
     - name: "check the PROCESSOR_ARCHITECTURE environment variable.64-bit systems will say AMD64 and 32-bit systems should say x86"
@@ -32,7 +30,13 @@ jobs:
     - name: "look for unusual services"
       run: net start                       
     - name: "query unusual services"
-      run: sc query 
+      run: sc query       
+    # - name: "install Chocolatey GUI" # https://github.com/chocolatey/ChocolateyGUI
+    #   run: choco install ChocolateyGUI  
+    - name: "Choco packages" 
+      run: .\scripts\Choco.ps1
+      shell: pwsh             
+
 
   windows-latest-pwsh-chocoguipre:
     name: "windows-latest Microsoft Windows Server 2019 Datacenter pwsh"  
