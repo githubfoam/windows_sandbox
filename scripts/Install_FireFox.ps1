@@ -13,3 +13,5 @@ If (Test-Path -Path $workdir -PathType Container)
 { Write-Host "$workdir already exists" -ForegroundColor Red}
 ELSE
 { New-Item -Path $workdir  -ItemType directory }
+
+dir 
