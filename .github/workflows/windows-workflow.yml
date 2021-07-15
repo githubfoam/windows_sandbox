@@ -15,7 +15,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
     - name: "silent install firefox" 
-      run: & "C:\scripts\Install_FireFox.ps1"
+      run: .\scripts\Install_FireFox.ps1
       shell: pwsh         
     # - name: "Close/reopen your shell to see the changes" 
     #   run: |
