@@ -11,8 +11,14 @@ Write-Output $VerbosePreference
 #--------------------------------------------------------------------------------------------------------
 
 # https://docs.chocolatey.org/en-us/choco/commands/install
-choco install --yes --no-progress --virus-check sysinternals osquery ChocolateyGUI
+choco install --yes --no-progress --virus-check sysinternals osquery ChocolateyGUI packer
 
-choco install --yes --no-progress --virus-check googlechrome 7zip
+choco install --yes --no-progress --virus-check googlechrome microsoft-edge 7zip
+
+choco install --yes --no-progress --virus-check ant bazel cmake git gradle maven sbt tortoisesvn
+
+choco install --yes --no-progress --virus-check apache-httpd nginx php postgresql jq julia 
+
+choco install --yes --no-progress --virus-check kubernetes-cli kubernetes-helm Minikube docker-compose 
 
 choco list --local-only

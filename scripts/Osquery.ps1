@@ -11,8 +11,11 @@ Write-Output $VerbosePreference
 #--------------------------------------------------------------------------------------------------------
 
 # https://docs.chocolatey.org/en-us/choco/commands/install
-choco install --yes --no-progress --virus-check  osquery 
+# https://community.chocolatey.org/packages/osquery/
+choco install --yes --no-progress --virus-check  --params='/InstallService' osquery 
+
 choco list --local-only
 
 refreshenv
-Start-Service osqueryd
+
+# Start-Service osqueryd #Cannot find any service with service name 'osqueryd'
