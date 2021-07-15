@@ -5,7 +5,8 @@
 #--------------------------------------------------------------------------------------------------------
 
 # https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/set-psdebug?view=powershell-7.1
-Set-PSDebug -Trace 2 #turns script debugging features on and off, sets the trace level
+Set-PSDebug -Trace 1 #turns script debugging features on and off, sets the trace level
+# Set-PSDebug -Trace 2 #turns script debugging features on and off, sets the trace level
 
 # Path for the Workdir
 $workdir = "C:\tmp\"
