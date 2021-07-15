@@ -11,4 +11,6 @@ Write-Output $VerbosePreference
 #--------------------------------------------------------------------------------------------------------
 
 # https://docs.chocolatey.org/en-us/choco/commands/install
-choco install --yes --no-progress --virus-check sysinternals googlechrome 7zip ChocolateyGUI
+choco install --yes --no-progress --virus-check sysinternals osquery ChocolateyGUI
+
+choco install --yes --no-progress --virus-check googlechrome 7zip
