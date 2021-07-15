@@ -3,12 +3,12 @@
 ### When a new version of FireFox comes out, just change the firefox version or url to the new value
 
 #--------------------------------------------------------------------------------------------------------
-
 # https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/set-psdebug?view=powershell-7.1
 Set-PSDebug -Trace 2 #turns script debugging features on and off, sets the trace level
 
 $VerbosePreference = "continue"
 Write-Output $VerbosePreference
+#--------------------------------------------------------------------------------------------------------
 
 # Path for the Workdir
 $workdir = "C:\tmp\"
@@ -19,11 +19,6 @@ If (Test-Path -Path $workdir -PathType Container)
 { Write-Host "$workdir already exists" -ForegroundColor Red}
 ELSE
 { New-Item -Path $workdir  -ItemType directory }
-
-$ff = Invoke-WebRequest  "*https://product-details.mozilla.org/1.0/firefox_versions.json*" | ConvertFrom-Json
-$ff | Write-Output
-$ff.psobject.properties.value[-1]
-$ff.psobject.properties.value[-1]  | Write-Output
 
 # Download the installer     
 
