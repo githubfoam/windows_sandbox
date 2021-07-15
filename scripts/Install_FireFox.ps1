@@ -8,9 +8,10 @@
 # Set-PSDebug -Trace 2 #turns script debugging features on and off, sets the trace level
 
 Write-Output $VerbosePreference
-
 $VerbosePreference = "continue"
-Write-Verbose "verbose output"
+Write-Output $VerbosePreference
+
+Write-Verbose -Message "Searching the Application Event Log." -Verbose
 
 # Path for the Workdir
 $workdir = "C:\tmp\"
