@@ -20,9 +20,15 @@ If (Test-Path -Path $workdir -PathType Container)
 ELSE
 { New-Item -Path $workdir  -ItemType directory }
 
+$ff = Invoke-WebRequest  "*https://product-details.mozilla.org/1.0/firefox_versions.json*" | ConvertFrom-Json
+$ff | Write-Output
+$ff.psobject.properties.value[-1]
+$ff.psobject.properties.value[-1]  | Write-Output
+
 # Download the installer     
 
 $source = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"           
+#specific version
 # $source = "https://download.mozilla.org/?product=firefox-51.0.1-SSL&os=win64&lang=en-US"
 $destination = "$workdir\firefox.exe"
 
@@ -46,9 +52,10 @@ Start-Process -FilePath "$workdir\firefox.exe" -ArgumentList "/S"
 
 Start-Sleep -s 45
 
-# Firefox version
+# Installed Firefox version
+
 $FFInstalled = (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Mozilla\Mozilla Firefox' | Select 'CurrentVersion').CurrentVersion
-$FFInstalled| Write-Output
+$FFInstalled | Write-Output
 
 # Remove the installer
 
