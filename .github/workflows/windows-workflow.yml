@@ -23,11 +23,7 @@ jobs:
     - name: "windows version" 
       run: .\scripts\Windows_Version.ps1
       shell: pwsh               
-    # - name: "Close/reopen your shell to see the changes" 
-    #   run: |
-    #       refreshenv
-    #       sc.exe start osqueryd
-    #   shell: cmd 
+
 
   # windows-latest:
   #   name: "windows-latest Microsoft Windows Server 2019 Datacenter"  
