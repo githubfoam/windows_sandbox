@@ -16,6 +16,8 @@ choco install --yes --no-progress --virus-check  --params='/InstallService' osqu
 
 choco list --local-only
 
-refreshenv
+# refreshenv
+
+Get-Service | Where-Object {$_.name -eq “osqueryd”}
 
 # Start-Service osqueryd #Cannot find any service with service name 'osqueryd'
