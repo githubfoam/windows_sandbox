@@ -16,7 +16,10 @@ jobs:
       uses: actions/checkout@v1
     - name: "silent install firefox" 
       run: .\scripts\Install_FireFox.ps1
-      shell: pwsh         
+      shell: pwsh    
+    - name: "test verbose" 
+      run: .\scripts\Test_Verbose.ps1
+      shell: pwsh            
     # - name: "Close/reopen your shell to see the changes" 
     #   run: |
     #       refreshenv
