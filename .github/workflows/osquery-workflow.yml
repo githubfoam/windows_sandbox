@@ -22,11 +22,11 @@ jobs:
     - name: "Close/reopen your shell to see the changes" 
       run: refreshenv
       shell: cmd         
-    # - name: "Close/reopen your shell to see the changes" 
-    #   run: |
-    #       refreshenv
-    #       sc.exe start osqueryd
-    #   shell: cmd         
+    - name: "Close/reopen your shell to see the changes" 
+      run: |
+          refreshenv
+          sc.exe start osqueryd
+      shell: cmd         
     #https://osquery.readthedocs.io/en/stable/installation/install-windows/#running-osquery
     - name: "Running osquery using cmd.exe" 
       run: sc.exe start osqueryd
