@@ -20,8 +20,8 @@ jobs:
     - name: "test verbose" 
       run: .\scripts\Test_Verbose.ps1
       shell: pwsh    
-    - name: "Windows Version" 
-      run: .\scripts\Windows_Versionps1
+    - name: "windows version" 
+      run: .\scripts\Windows_Version.ps1
       shell: pwsh               
     # - name: "Close/reopen your shell to see the changes" 
     #   run: |
