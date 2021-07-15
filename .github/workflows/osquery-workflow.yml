@@ -56,11 +56,14 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
     #https://chocolatey.org/packages/osquery/      
+    # - name: "Install osquery" 
+    #   run: choco install --yes --no-progress --virus-check  osquery   
     - name: "Install osquery" 
-      run: choco install --yes --no-progress --virus-check  osquery   
-    - name: "Close/reopen your shell to see the changes" 
-      run: refreshenv          
-      shell: pwsh  
+      run: .\scripts\Osquery.ps1
+      shell: pwsh      
+    # - name: "Close/reopen your shell to see the changes" 
+    #   run: refreshenv          
+    #   shell: pwsh  
     # - name: "Close/reopen your shell to see the changes" 
     #   run: |
     #       refreshenv
