@@ -16,7 +16,8 @@ choco install --yes --no-progress --virus-check  --params='/InstallService' osqu
 
 choco list --local-only
 
-# refreshenv
+choco install --yes --no-progress --virus-check sysinternals
+psservice config osqueryd
 
 Write-Output "displays a list of running services."
 tasklist | findstr "osqueryd.exe"
@@ -24,15 +25,21 @@ tasklist | findstr "osqueryd.exe"
 Write-Output "display a list of all processes along with their corresponding PID, and services that are tied to them"
 tasklist /svc | findstr "osqueryd"
 
-choco install --yes --no-progress --virus-check sysinternals
-psservice config osqueryd
-
 # Get all services on the computer
 Get-Service -Name "osqueryd"
 Get-Service "osquery*"
 Get-Service "osqueryd" -RequiredServices #gets the services that the osqueryd service requires
 
-Get-Service -Name "osqueryd" | Restart-Service -Force
+Get-Service -Name "osqueryd" | Stop-Service -Force
+
+Start-Service -DisplayName *osqueryd* -WhatIf
+
+Get-Service -Displayname "osqueryd"
+
+Get-CimInstance win32_service | Where-Object Name -eq "osqueryd"
+
+Start-Service -Force osqueryd
+
 Get-Service -Displayname "osqueryd"
 
 # Start-Service osqueryd #Cannot find any service with service name 'osqueryd'
