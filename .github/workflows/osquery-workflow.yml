@@ -27,7 +27,7 @@ jobs:
           refreshenv
           sc.exe start osqueryd
       shell: cmd         
-    https://osquery.readthedocs.io/en/stable/installation/install-windows/#running-osquery
+    # https://osquery.readthedocs.io/en/stable/installation/install-windows/#running-osquery
     - name: "Running osquery using cmd.exe" 
       run: sc.exe start osqueryd
       shell: cmd               
