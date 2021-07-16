@@ -28,8 +28,8 @@ jobs:
           sc.exe start osqueryd
       shell: cmd         
     # https://osquery.readthedocs.io/en/stable/installation/install-windows/#running-osquery
-    - name: "Running osquery using cmd.exe" 
-      run: sc.exe start osqueryd
+    # - name: "Running osquery using cmd.exe" 
+    #   run: sc.exe start osqueryd
       shell: cmd               
     - name: "check if server is virtual"
       run: Systeminfo | findstr /i model   
@@ -60,8 +60,9 @@ jobs:
       shell: pwsh                     
     - name: "List both the Display and Service name for both running and stopped services" 
       run: sc query type= service state= all
-    - name: "List both the Display and Service name for active services" 
-      run: sc query type= service state= active 
+      # ERROR: Invalid state= field
+    # - name: "List both the Display and Service name for active services" 
+    #   run: sc query type= service state= active 
     - name: "List both the Display and Service name for inactive services" 
       run: sc query type= service state= inactive                                           
     - name: "check if server is virtual"
@@ -91,14 +92,14 @@ jobs:
     #https://chocolatey.org/packages/osquery/      
     - name: "Install osquery" 
       run: choco install osquery  
-    # - name: "Close/reopen your shell to see the changes" 
-    #   run: |
-    #       refreshenv
-    #       sc.exe start osqueryd
-    #   shell: cmd         
+    - name: "Close/reopen your shell to see the changes" 
+      run: |
+          refreshenv
+          sc.exe start osqueryd
+      shell: cmd         
     #https://osquery.readthedocs.io/en/stable/installation/install-windows/#running-osquery
-    - name: "Running osquery using cmd.exe" 
-      run: sc.exe start osqueryd
+    # - name: "Running osquery using cmd.exe" 
+    #   run: sc.exe start osqueryd
       shell: cmd        
     - name: "check if server is virtual"
       run: Systeminfo | findstr /i model   
