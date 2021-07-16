@@ -4,18 +4,12 @@
 
 ![Chocolatey CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/Chocolatey%20CI%20workflow/badge.svg)  
 
-![os matrix CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/os%20matrix%20CI%20workflow/badge.svg?branch=master)  
+![os matrix CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/os%20matrix%20CI%20workflow/badge.svg?branch=master) 
 
-Powershell on Ubuntu  
-Pester  
-PSGallery  
-PSScriptAnalyzer  
 ![powershell CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/powershell%20CI%20workflow/badge.svg?branch=master)  
 
-~~~
-Chocolatey GUI is a user interface for Chocolatey (the Machine Package Manager for Windows).
-https://github.com/chocolatey/ChocolateyGUI
 
+~~~
 A command-line installer for Windows
 https://scoop.sh/
 
@@ -27,6 +21,11 @@ https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-synta
 
 ~~~
 ~~~
+Powershell on Ubuntu  
+Pester  
+PSGallery  
+PSScriptAnalyzer  
+
 PSScriptAnalyzer is a static code checker for PowerShell modules and scripts. 
 https://github.com/PowerShell/PSScriptAnalyzer
 
@@ -43,7 +42,7 @@ https://www.powershellgallery.com/
 ~~~
 
 ~~~
-monitor and log system activity to the Windows event log
+Sysmon-monitor and log system activity to the Windows event log
 https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon
 the Sam Spade utility provides all these tools and more in a graphical user interface.
 assist in determining the source of Internet traffic. These tools include: whois,traceroute, finger, ping, and nslookup
@@ -100,15 +99,47 @@ https://github.com/cli/cli
 ~~~
 office365
 ~~~
-https://github.com/eshlomo1/Microsoft-365-for-IT-and-Security
-https://github.com/Vet-2-tech/Office365-Security-Compliance-Screen-Scrapping-Checklist
-https://github.com/cscannell-inacloud/Office365-Security-Docs/tree/AndreaBarr-patch-1/SecurityCompliance
-https://github.com/diogo-fernan/powershell-ad-office365
+https://github.com/eshlomo1/Microsoft-365-for-IT-and-Security  
+https://github.com/Vet-2-tech/Office365-Security-Compliance-Screen-Scrapping-Checklist  
+https://github.com/cscannell-inacloud/Office365-Security-Docs/tree/AndreaBarr-patch-1/SecurityCompliance  
+https://github.com/diogo-fernan/powershell-ad-office365  
 Elastic Beat for fetching and shipping Office 365 audit events 
-https://github.com/counteractive/o365beat
-https://github.com/londonc/LMC-PSC
+https://github.com/counteractive/o365beat  
+https://github.com/londonc/LMC-PSC  
 Gets events from the Office 365 unified audit log and outputs their details into the pipeline
-https://github.com/counteractive/Get-UnifiedAuditLog
+https://github.com/counteractive/Get-UnifiedAuditLog  
 Enumerate valid usernames from Office 365 using ActiveSync, Autodiscover v1, or office.com login page
-https://github.com/gremwell/o365enum
+https://github.com/gremwell/o365enum  
+~~~
+chocolatey base packages
+~~~
+sysinternals 
+osquery 
+ChocolateyGUI 
+packer
+
+googlechrome 
+microsoft-edge 
+7zip
+
+ant 
+bazel 
+cmake 
+git 
+gradle 
+maven 
+sbt 
+tortoisesvn
+
+apache-httpd 
+nginx 
+php 
+postgresql 
+jq 
+julia
+
+kubernetes-cli 
+kubernetes-helm 
+Minikube 
+docker-compose 
 ~~~
