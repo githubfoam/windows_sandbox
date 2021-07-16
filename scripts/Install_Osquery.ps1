@@ -19,10 +19,20 @@ choco list --local-only
 # refreshenv
 
 Write-Output "displays a list of running services."
-tasklist
+tasklist | findstr "osqueryd.exe"
 
 Write-Output "display a list of all processes along with their corresponding PID, and services that are tied to them"
-tasklist /svc
+tasklist /svc | findstr "osqueryd"
+
+choco install --yes --no-progress --virus-check sysinternals
+psservice
+
+# Get all services on the computer
+Get-Service
+# Get-Service "osquery*"
+# Get-Service -Displayname "*network*"
+
+
 
 # Get-Service | Where-Object {$_.name -eq “osqueryd”}
 

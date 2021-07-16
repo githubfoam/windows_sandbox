@@ -34,7 +34,7 @@ jobs:
     # - name: "install Chocolatey GUI" # https://github.com/chocolatey/ChocolateyGUI
     #   run: choco install ChocolateyGUI  
     - name: "Choco packages" 
-      run: .\scripts\Choco.ps1
+      run: .\scripts\Choco_Packages.ps1
       shell: pwsh             
 
 

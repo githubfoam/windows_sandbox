@@ -62,6 +62,10 @@ jobs:
     - name: "Install osquery - powershell script" 
       run: .\scripts\Install_Osquery.ps1
       shell: pwsh      
+    - name: "Query osquery service - cmd" 
+      run: |
+        sc query
+      shell: cmd          
     # - name: "Close/reopen your shell to see the changes" 
     #   run: refreshenv          
     #   shell: pwsh  
