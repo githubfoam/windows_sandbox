@@ -25,15 +25,14 @@ Write-Output "display a list of all processes along with their corresponding PID
 tasklist /svc | findstr "osqueryd"
 
 choco install --yes --no-progress --virus-check sysinternals
-psservice
+psservice config osqueryd
 
 # Get all services on the computer
-Get-Service
-# Get-Service "osquery*"
-# Get-Service -Displayname "*network*"
+Get-Service -Name "osqueryd"
+Get-Service "osquery*"
+Get-Service "osqueryd" -RequiredServices #gets the services that the osqueryd service requires
 
-
-
-# Get-Service | Where-Object {$_.name -eq “osqueryd”}
+Get-Service -Name "osqueryd" | Restart-Service -Force
+Get-Service -Displayname "osqueryd"
 
 # Start-Service osqueryd #Cannot find any service with service name 'osqueryd'
