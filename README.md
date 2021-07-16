@@ -3,13 +3,6 @@
 ![powershell CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/powershell%20CI%20workflow/badge.svg?branch=feature_githubactions)
 
 ~~~
-Chocolatey GUI is a user interface for Chocolatey (the Machine Package Manager for Windows).
-https://github.com/chocolatey/ChocolateyGUI
-
-choco install osquery
-https://chocolatey.org/packages/osquery/
-https://osquery.io/
-
 Sysmon
 https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon
 
@@ -40,4 +33,35 @@ https://github.com/PowerShell/PSScriptAnalyzer
 https://github.com/pester/Pester
 
 ~~~
+chocolatey base packages
+~~~
+sysinternals 
+osquery 
+ChocolateyGUI 
+packer
 
+googlechrome 
+microsoft-edge 
+7zip
+
+ant 
+bazel 
+cmake 
+git 
+gradle 
+maven 
+sbt 
+tortoisesvn
+
+apache-httpd 
+nginx 
+php 
+postgresql 
+jq 
+julia
+
+kubernetes-cli 
+kubernetes-helm 
+Minikube 
+docker-compose 
+~~~
