@@ -111,35 +111,4 @@ https://github.com/counteractive/Get-UnifiedAuditLog
 Enumerate valid usernames from Office 365 using ActiveSync, Autodiscover v1, or office.com login page
 https://github.com/gremwell/o365enum  
 ~~~
-chocolatey base packages
-~~~
-sysinternals 
-osquery 
-ChocolateyGUI 
-packer
 
-googlechrome 
-microsoft-edge 
-7zip
-
-ant 
-bazel 
-cmake 
-git 
-gradle 
-maven 
-sbt 
-tortoisesvn
-
-apache-httpd 
-nginx 
-php 
-postgresql 
-jq 
-julia
-
-kubernetes-cli 
-kubernetes-helm 
-Minikube 
-docker-compose 
-~~~
