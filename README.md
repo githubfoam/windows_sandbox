@@ -2,8 +2,6 @@
 
 ![windows CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/windows%20CI%20workflow/badge.svg)  
 
-![Chocolatey CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/Chocolatey%20CI%20workflow/badge.svg)  
-
 ![os matrix CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/os%20matrix%20CI%20workflow/badge.svg?branch=master) 
 
 ![powershell CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/powershell%20CI%20workflow/badge.svg?branch=master)  
