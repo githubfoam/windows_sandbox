@@ -10,6 +10,22 @@ on:
 
 jobs:
 
+  windows-latest-pwsh-scripts:
+    name: "windows-latest Microsoft Windows Server 2019 Datacenter pwsh"  
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: "silent install firefox" 
+      run: .\scripts\Install_FireFox.ps1
+      shell: pwsh    
+    - name: "test verbose" 
+      run: .\scripts\Test_Verbose.ps1
+      shell: pwsh    
+    - name: "windows version" 
+      run: .\scripts\Windows_Version.ps1
+      shell: pwsh  
+
 # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-powershell
   pester-test:
     name: "Test PowerShell on Ubuntu"
