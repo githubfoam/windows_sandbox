@@ -40,6 +40,5 @@ Get-CimInstance win32_service | Where-Object Name -eq "osqueryd"
 
 Start-Service osqueryd
 
-Get-Service -Displayname "osqueryd"
+Get-CimInstance win32_service | Where-Object Name -eq "osqueryd"
 
-# Start-Service osqueryd #Cannot find any service with service name 'osqueryd'
