@@ -80,7 +80,7 @@ jobs:
     if: ${{ always() }}
 
   install-dependencies:
-    name: Install dependencies
+    name: "Install dependencies ubuntu latest"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -92,7 +92,7 @@ jobs:
 
 # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-powershell
   lint-with-PSScriptAnalyzer:
-    name: "Install and run PSScriptAnalyzer"
+    name: "Install and run PSScriptAnalyzer ubuntu latest"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -113,5 +113,18 @@ jobs:
                 Write-Output "There were $($errors.Count) errors and $($warnings.Count) warnings total."
             }
 
+  windows-latest-PSScriptAnalyzer-build:
+    name: "build from source - windows-latest Microsoft Windows Server 2019 Datacenter"  
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+      # https://github.com/PowerShell/PSScriptAnalyzer#usage
+    - name: "Install PSScriptAnalyzer module"
+      shell: pwsh
+      run: |
+            $PSVersionTable
+            git clone https://github.com/PowerShell/PSScriptAnalyzer
+            cd path/to/PSScriptAnalyzer
 
 
