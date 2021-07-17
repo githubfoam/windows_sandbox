@@ -120,11 +120,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
       # https://github.com/PowerShell/PSScriptAnalyzer#usage
-    - name: "Install PSScriptAnalyzer module"
+    - name: "git clone PSScriptAnalyzer module"
       shell: pwsh
       run: |
             $PSVersionTable
             git clone https://github.com/PowerShell/PSScriptAnalyzer
-            cd path/to/PSScriptAnalyzer
+            cd PSScriptAnalyzer
 
 
