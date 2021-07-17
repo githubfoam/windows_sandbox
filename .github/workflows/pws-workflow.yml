@@ -19,6 +19,9 @@ jobs:
     - name: "silent install firefox" 
       run: .\scripts\Install_FireFox.ps1
       shell: pwsh    
+    - name: "silent install sysinternals" 
+      run: .\scripts\Install_Sysinternals.ps1
+      shell: pwsh         
     - name: "test verbose" 
       run: .\scripts\Test_Verbose.ps1
       shell: pwsh    
