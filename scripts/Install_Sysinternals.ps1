@@ -48,10 +48,10 @@ else
 # # Unzip SysinternalsSuite.zip
 Expand-Archive -LiteralPath $destination -DestinationPath $workdir
 
-Set-Location -Path $workdir
-Set-Location -Path $workdir -PassThru
+# Set-Location -Path $workdir
+# Set-Location -Path $workdir -PassThru
 # cd $workdir
-Get-ChildItem -Path $workdir -Recurse
+Get-ChildItem -Path $workdir -Name -Recurse
 # dir /b /s /a:-D > dirlist.txt & more dirlist.txt
 
 

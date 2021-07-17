@@ -11,23 +11,39 @@ on:
 jobs:
 
   windows-latest-pwsh-scripts:
-    name: "windows-latest Microsoft Windows Server 2019 Datacenter pwsh"  
+    name: "pwsh scripts - windows-latest Microsoft Windows Server 2019 Datacenter"  
     runs-on: windows-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - name: "silent install firefox" 
-      run: .\scripts\Install_FireFox.ps1
-      shell: pwsh    
+    - name: "Install PSScriptAnalyzer module"
+      shell: pwsh
+      run: |
+            Set-PSRepository PSGallery -InstallationPolicy Trusted
+            Install-Module PSScriptAnalyzer -ErrorAction Stop 
+    # - name: "Lint with PSScriptAnalyzer"
+    #   shell: pwsh
+    #   run: |
+    #         Invoke-ScriptAnalyzer -Path *.ps1 -Recurse -Outvariable issues
+    #         $errors   = $issues.Where({$_.Severity -eq 'Error'})
+    #         $warnings = $issues.Where({$_.Severity -eq 'Warning'})
+    #         if ($errors) {
+    #             Write-Error "There were $($errors.Count) errors and $($warnings.Count) warnings total." -ErrorAction Stop
+    #         } else {
+    #             Write-Output "There were $($errors.Count) errors and $($warnings.Count) warnings total."
+    #         }                 
     - name: "silent install sysinternals" 
       run: .\scripts\Install_Sysinternals.ps1
-      shell: pwsh         
-    - name: "test verbose" 
-      run: .\scripts\Test_Verbose.ps1
-      shell: pwsh    
-    - name: "windows version" 
-      run: .\scripts\Windows_Version.ps1
-      shell: pwsh  
+      shell: pwsh      
+    # - name: "silent install firefox" 
+    #   run: .\scripts\Install_FireFox.ps1
+    #   shell: pwsh           
+    # - name: "test verbose" 
+    #   run: .\scripts\Test_Verbose.ps1
+    #   shell: pwsh    
+    # - name: "windows version" 
+    #   run: .\scripts\Windows_Version.ps1
+    #   shell: pwsh  
 
 # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-powershell
   pester-test:
