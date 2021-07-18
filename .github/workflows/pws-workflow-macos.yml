@@ -1,4 +1,4 @@
-name: "powershell CI workflow ubuntu"
+name: "powershell CI workflow macos"
 
 
 on:
@@ -10,15 +10,14 @@ on:
 
 jobs:
 
-  ubuntu-latest-pwsh-scripts:
-    name: "pwsh scripts - ubuntu"  
-    runs-on: ubuntu-latest
+  macos-latest-pwsh-scripts:
+    name: "pwsh scripts - macos-latest 10.15.7"
+    runs-on: macos-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v1
     - name: "powershell version" 
       run: $PSVersionTable
-      shell: pwsh 
     - name: "Install PSScriptAnalyzer module"
       shell: pwsh
       run: |
@@ -39,21 +38,22 @@ jobs:
                 Write-Output "There were $($errors.Count) errors and $($warnings.Count) warnings total."
             }                 
     # - name: "silent install sysinternals" 
-      # run: .\scripts\Install_Sysinternals.ps1   
+    #   run: .\scripts\Install_Sysinternals.ps1
+    #   shell: pwsh      
     # - name: "silent install firefox" 
-    #   run: ./scripts/Install_FireFox.ps1
+    #   run: .\scripts\Install_FireFox.ps1
     #   shell: pwsh           
-    - name: "test verbose" 
-      run: .\scripts\Test_Verbose.ps1
-      shell: pwsh    
+    # - name: "test verbose" 
+    #   run: .\scripts\Test_Verbose.ps1
+    #   shell: pwsh    
     # - name: "windows version" 
     #   run: .\scripts\Windows_Version.ps1
     #   shell: pwsh  
 
 # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-powershell
   pester-test:
-    name: "Test PowerShell ubuntu"
-    runs-on: ubuntu-latest
+    name: "Test PowerShell macos latest"
+    runs-on: macos-latest
     steps:
     - name: "Check out repository code"
       uses: actions/checkout@v2
@@ -69,8 +69,8 @@ jobs:
 
 # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-powershell#packaging-workflow-data-as-artifacts
   upload-pester-results:
-    name: "Run Pester and upload results ubuntu" 
-    runs-on: ubuntu-latest
+    name: "Run Pester and upload results macos latest"
+    runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
     - name: "powershell version" 
@@ -86,8 +86,8 @@ jobs:
     if: ${{ always() }}
 
   install-dependencies:
-    name: "Install dependencies ubuntu latest"
-    runs-on: ubuntu-latest
+    name: "Install dependencies macos latest"
+    runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
     - name: "powershell version" 
@@ -100,8 +100,8 @@ jobs:
 
 # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-powershell
   lint-with-PSScriptAnalyzer:
-    name: "Install and run PSScriptAnalyzer ubuntu latest"
-    runs-on: ubuntu-latest
+    name: "Install and run PSScriptAnalyzer macos latest"
+    runs-on: macos-latest 
     steps:
     - uses: actions/checkout@v2
     - name: "powershell version" 
@@ -123,9 +123,9 @@ jobs:
                 Write-Output "There were $($errors.Count) errors and $($warnings.Count) warnings total."
             }
 
-  ubuntu-latest-PSScriptAnalyzer-build:
-    name: "build from source - ubuntu"  
-    runs-on: ubuntu-latest
+  windows-latest-PSScriptAnalyzer-build:
+    name: "build from source - macos-latest"  
+    runs-on: macos-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v1
