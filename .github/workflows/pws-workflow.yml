@@ -127,6 +127,7 @@ jobs:
             git clone https://github.com/PowerShell/PSScriptAnalyzer
             cd PSScriptAnalyzer
             .\build.ps1 -PSVersion 7
-            .\build.ps1 -Documentation
+            .\build.ps1 -Documentation #Rebuild documentation since it gets built automatically only the first time
+            Get-ScriptAnalyzerRule #confirm installation
 
 
