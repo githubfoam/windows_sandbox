@@ -16,6 +16,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
+    - name: "powershell version" 
+      run: $PSVersionTable
     - name: "Install PSScriptAnalyzer module"
       shell: pwsh
       run: |
@@ -55,6 +57,8 @@ jobs:
     steps:
     - name: "Check out repository code"
       uses: actions/checkout@v2
+    - name: "powershell version" 
+      run: $PSVersionTable
     # - name: "Perform a Pester test from the command-line"
     #   shell: pwsh
     #   run: Test-Path resultsfile.log | Should -Be $true
@@ -69,6 +73,8 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
+    - name: "powershell version" 
+      run: $PSVersionTable
     - name: "Test with Pester"
       shell: pwsh
       run: Invoke-Pester Unit.Tests.ps1 -Passthru | Export-CliXml -Path Unit.Tests.xml
@@ -84,6 +90,8 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
+    - name: "powershell version" 
+      run: $PSVersionTable
     - name: Install from PSGallery
       shell: pwsh
       run: |
@@ -96,6 +104,8 @@ jobs:
     runs-on: windows-latest    
     steps:
     - uses: actions/checkout@v2
+    - name: "powershell version" 
+      run: $PSVersionTable
     - name: "Install PSScriptAnalyzer module"
       shell: pwsh
       run: |
@@ -119,6 +129,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
+    - name: "powershell version" 
+      run: $PSVersionTable
       # https://github.com/PowerShell/PSScriptAnalyzer#usage
     - name: "git clone PSScriptAnalyzer module"
       shell: pwsh
