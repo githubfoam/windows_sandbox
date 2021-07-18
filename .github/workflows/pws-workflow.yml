@@ -126,7 +126,7 @@ jobs:
             $PSVersionTable
             git clone https://github.com/PowerShell/PSScriptAnalyzer
             cd PSScriptAnalyzer
-            \build.ps1 -PSVersion 7
+            .\build.ps1 -PSVersion 7
             .\build.ps1 -Documentation
 
 
