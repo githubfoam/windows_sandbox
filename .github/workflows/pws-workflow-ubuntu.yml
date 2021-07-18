@@ -36,7 +36,8 @@ jobs:
                 Write-Output "There were $($errors.Count) errors and $($warnings.Count) warnings total."
             }                 
     - name: "silent install sysinternals" 
-      run: .\scripts\Install_Sysinternals.ps1
+      # run: .\scripts\Install_Sysinternals.ps1
+      run: pwd
       shell: pwsh      
     # - name: "silent install firefox" 
     #   run: .\scripts\Install_FireFox.ps1
