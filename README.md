@@ -4,9 +4,6 @@
 
 ![os matrix CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/os%20matrix%20CI%20workflow/badge.svg?branch=master) 
 
-![powershell CI workflow](https://github.com/githubfoam/windows_sandbox/workflows/powershell%20CI%20workflow/badge.svg?branch=master)  
-
-
 ~~~
 A command-line installer for Windows
 https://scoop.sh/
