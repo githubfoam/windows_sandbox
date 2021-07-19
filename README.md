@@ -17,8 +17,6 @@ https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-synta
 ~~~
 
 ~~~
-Sysmon-monitor and log system activity to the Windows event log
-https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon
 the Sam Spade utility provides all these tools and more in a graphical user interface.
 assist in determining the source of Internet traffic. These tools include: whois,traceroute, finger, ping, and nslookup
 https://www.sans.org/reading-room/whitepapers/tools/sam-spade-934
