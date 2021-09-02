@@ -47,6 +47,8 @@ Burp Suite Community Edition,manual tools for exploring web security. Proxy your
 https://portswigger.net/burp/communitydownload
 Hetty is an HTTP toolkit for security research
 https://github.com/dstotijn/hetty
+WinDump is the Windows version of tcpdump
+https://www.winpcap.org/windump/default.htm
 ~~~
 ~~~
 cpu_rec is a tool that recognizes cpu instructions in an arbitrary binary file. It can be used as a standalone tool, or as a plugin for binwalk
