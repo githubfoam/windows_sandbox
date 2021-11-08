@@ -10,7 +10,8 @@ on:
 
 jobs:
 
-  windows-latest-pwsh-scripts:
+# https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-Server
+  windows-latest-docker:
     name: "pwsh scripts - windows-latest Microsoft Windows Server 2019 Datacenter"  
     runs-on: windows-latest
     steps:
@@ -18,128 +19,145 @@ jobs:
       uses: actions/checkout@v1
     - name: "powershell version" 
       run: $PSVersionTable
-    - name: "Install PSScriptAnalyzer module"
+    - name: "Install docker"
       shell: pwsh
       run: |
-            Set-PSRepository PSGallery -InstallationPolicy Trusted
-            Install-Module PSScriptAnalyzer -ErrorAction Stop 
-    - name: "Lint with PSScriptAnalyzer"
-      shell: pwsh
-      run: |
-            Write-Host $(Join-Path -Path $(Get-Location) -ChildPath "\scripts\*.ps1")
-            $workdir = $(Join-Path -Path $(Get-Location) -ChildPath "\scripts\*.ps1")
-            Write-Host $workdir
-            Invoke-ScriptAnalyzer -Path  $workdir -Recurse -Outvariable issues
-            $errors   = $issues.Where({$_.Severity -eq 'Error'})
-            $warnings = $issues.Where({$_.Severity -eq 'Warning'})
-            if ($errors) {
-                Write-Error "There were $($errors.Count) errors and $($warnings.Count) warnings total." -ErrorAction Stop
-            } else {
-                Write-Output "There were $($errors.Count) errors and $($warnings.Count) warnings total."
-            }                 
-    - name: "silent install sysinternals" 
-      run: .\scripts\Install_Sysinternals.ps1
-      shell: pwsh      
-    # - name: "silent install firefox" 
-    #   run: .\scripts\Install_FireFox.ps1
-    #   shell: pwsh           
-    # - name: "test verbose" 
-    #   run: .\scripts\Test_Verbose.ps1
-    #   shell: pwsh    
-    # - name: "windows version" 
-    #   run: .\scripts\Windows_Version.ps1
-    #   shell: pwsh  
+            # elevated PowerShell session and install the Docker-Microsoft PackageManagement Provider from the PowerShell Gallery
+            Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
+            # Use the PackageManagement PowerShell module to install the latest version of Docker
+            Install-Package -Name docker -ProviderName DockerMsftProvider  -Force
 
-# https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-powershell
-  pester-test:
-    name: "Test PowerShell windows latest"
-    runs-on: windows-latest
-    steps:
-    - name: "Check out repository code"
-      uses: actions/checkout@v2
-    - name: "powershell version" 
-      run: $PSVersionTable
-    # - name: "Perform a Pester test from the command-line"
-    #   shell: pwsh
-    #   run: Test-Path resultsfile.log | Should -Be $true
-    - name: "Perform a Pester test from the Tests.ps1 file"
-      shell: pwsh
-      run: |
-        Invoke-Pester Unit.Tests.ps1 -Passthru
 
-# https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-powershell#packaging-workflow-data-as-artifacts
-  upload-pester-results:
-    name: "Run Pester and upload results windows latest"
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: "powershell version" 
-      run: $PSVersionTable
-    - name: "Test with Pester"
-      shell: pwsh
-      run: Invoke-Pester Unit.Tests.ps1 -Passthru | Export-CliXml -Path Unit.Tests.xml
-    - name: "Upload test results"
-      uses: actions/upload-artifact@v2
-      with:
-        name: ubuntu-Unit-Tests
-        path: Unit.Tests.xml
-    if: ${{ always() }}
+#   windows-latest-pwsh-scripts:
+#     name: "pwsh scripts - windows-latest Microsoft Windows Server 2019 Datacenter"  
+#     runs-on: windows-latest
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v1
+#     - name: "powershell version" 
+#       run: $PSVersionTable
+#     - name: "Install PSScriptAnalyzer module"
+#       shell: pwsh
+#       run: |
+#             Set-PSRepository PSGallery -InstallationPolicy Trusted
+#             Install-Module PSScriptAnalyzer -ErrorAction Stop 
+#     - name: "Lint with PSScriptAnalyzer"
+#       shell: pwsh
+#       run: |
+#             Write-Host $(Join-Path -Path $(Get-Location) -ChildPath "\scripts\*.ps1")
+#             $workdir = $(Join-Path -Path $(Get-Location) -ChildPath "\scripts\*.ps1")
+#             Write-Host $workdir
+#             Invoke-ScriptAnalyzer -Path  $workdir -Recurse -Outvariable issues
+#             $errors   = $issues.Where({$_.Severity -eq 'Error'})
+#             $warnings = $issues.Where({$_.Severity -eq 'Warning'})
+#             if ($errors) {
+#                 Write-Error "There were $($errors.Count) errors and $($warnings.Count) warnings total." -ErrorAction Stop
+#             } else {
+#                 Write-Output "There were $($errors.Count) errors and $($warnings.Count) warnings total."
+#             }                 
+#     - name: "silent install sysinternals" 
+#       run: .\scripts\Install_Sysinternals.ps1
+#       shell: pwsh      
+#     # - name: "silent install firefox" 
+#     #   run: .\scripts\Install_FireFox.ps1
+#     #   shell: pwsh           
+#     # - name: "test verbose" 
+#     #   run: .\scripts\Test_Verbose.ps1
+#     #   shell: pwsh    
+#     # - name: "windows version" 
+#     #   run: .\scripts\Windows_Version.ps1
+#     #   shell: pwsh  
 
-  install-dependencies:
-    name: "Install dependencies windows latest"
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: "powershell version" 
-      run: $PSVersionTable
-    - name: Install from PSGallery
-      shell: pwsh
-      run: |
-        Set-PSRepository PSGallery -InstallationPolicy Trusted
-        Install-Module SqlServer, PSScriptAnalyzer
+# # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-powershell
+#   pester-test:
+#     name: "Test PowerShell windows latest"
+#     runs-on: windows-latest
+#     steps:
+#     - name: "Check out repository code"
+#       uses: actions/checkout@v2
+#     - name: "powershell version" 
+#       run: $PSVersionTable
+#     # - name: "Perform a Pester test from the command-line"
+#     #   shell: pwsh
+#     #   run: Test-Path resultsfile.log | Should -Be $true
+#     - name: "Perform a Pester test from the Tests.ps1 file"
+#       shell: pwsh
+#       run: |
+#         Invoke-Pester Unit.Tests.ps1 -Passthru
 
-# https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-powershell
-  lint-with-PSScriptAnalyzer:
-    name: "Install and run PSScriptAnalyzer windows latest"
-    runs-on: windows-latest    
-    steps:
-    - uses: actions/checkout@v2
-    - name: "powershell version" 
-      run: $PSVersionTable
-    - name: "Install PSScriptAnalyzer module"
-      shell: pwsh
-      run: |
-            Set-PSRepository PSGallery -InstallationPolicy Trusted
-            Install-Module PSScriptAnalyzer -ErrorAction Stop
-    - name: "Lint with PSScriptAnalyzer"
-      shell: pwsh
-      run: |
-            Invoke-ScriptAnalyzer -Path *.ps1 -Recurse -Outvariable issues
-            $errors   = $issues.Where({$_.Severity -eq 'Error'})
-            $warnings = $issues.Where({$_.Severity -eq 'Warning'})
-            if ($errors) {
-                Write-Error "There were $($errors.Count) errors and $($warnings.Count) warnings total." -ErrorAction Stop
-            } else {
-                Write-Output "There were $($errors.Count) errors and $($warnings.Count) warnings total."
-            }
+# # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-powershell#packaging-workflow-data-as-artifacts
+#   upload-pester-results:
+#     name: "Run Pester and upload results windows latest"
+#     runs-on: windows-latest
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: "powershell version" 
+#       run: $PSVersionTable
+#     - name: "Test with Pester"
+#       shell: pwsh
+#       run: Invoke-Pester Unit.Tests.ps1 -Passthru | Export-CliXml -Path Unit.Tests.xml
+#     - name: "Upload test results"
+#       uses: actions/upload-artifact@v2
+#       with:
+#         name: ubuntu-Unit-Tests
+#         path: Unit.Tests.xml
+#     if: ${{ always() }}
 
-  windows-latest-PSScriptAnalyzer-build:
-    name: "build from source - windows-latest Microsoft Windows Server 2019 Datacenter"  
-    runs-on: windows-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-    - name: "powershell version" 
-      run: $PSVersionTable
-      # https://github.com/PowerShell/PSScriptAnalyzer#usage
-    - name: "git clone PSScriptAnalyzer module"
-      shell: pwsh
-      run: |
-            $PSVersionTable
-            git clone https://github.com/PowerShell/PSScriptAnalyzer
-            cd PSScriptAnalyzer
-            .\build.ps1 -PSVersion 7
-            .\build.ps1 -Documentation #Rebuild documentation since it gets built automatically only the first time
-            Get-ScriptAnalyzerRule #confirm installation
+#   install-dependencies:
+#     name: "Install dependencies windows latest"
+#     runs-on: windows-latest
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: "powershell version" 
+#       run: $PSVersionTable
+#     - name: Install from PSGallery
+#       shell: pwsh
+#       run: |
+#         Set-PSRepository PSGallery -InstallationPolicy Trusted
+#         Install-Module SqlServer, PSScriptAnalyzer
+
+# # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-powershell
+#   lint-with-PSScriptAnalyzer:
+#     name: "Install and run PSScriptAnalyzer windows latest"
+#     runs-on: windows-latest    
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: "powershell version" 
+#       run: $PSVersionTable
+#     - name: "Install PSScriptAnalyzer module"
+#       shell: pwsh
+#       run: |
+#             Set-PSRepository PSGallery -InstallationPolicy Trusted
+#             Install-Module PSScriptAnalyzer -ErrorAction Stop
+#     - name: "Lint with PSScriptAnalyzer"
+#       shell: pwsh
+#       run: |
+#             Invoke-ScriptAnalyzer -Path *.ps1 -Recurse -Outvariable issues
+#             $errors   = $issues.Where({$_.Severity -eq 'Error'})
+#             $warnings = $issues.Where({$_.Severity -eq 'Warning'})
+#             if ($errors) {
+#                 Write-Error "There were $($errors.Count) errors and $($warnings.Count) warnings total." -ErrorAction Stop
+#             } else {
+#                 Write-Output "There were $($errors.Count) errors and $($warnings.Count) warnings total."
+#             }
+
+#   windows-latest-PSScriptAnalyzer-build:
+#     name: "build from source - windows-latest Microsoft Windows Server 2019 Datacenter"  
+#     runs-on: windows-latest
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v1
+#     - name: "powershell version" 
+#       run: $PSVersionTable
+#       # https://github.com/PowerShell/PSScriptAnalyzer#usage
+#     - name: "git clone PSScriptAnalyzer module"
+#       shell: pwsh
+#       run: |
+#             $PSVersionTable
+#             git clone https://github.com/PowerShell/PSScriptAnalyzer
+#             cd PSScriptAnalyzer
+#             .\build.ps1 -PSVersion 7
+#             .\build.ps1 -Documentation #Rebuild documentation since it gets built automatically only the first time
+#             Get-ScriptAnalyzerRule #confirm installation
 
 
