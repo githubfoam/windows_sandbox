@@ -14,6 +14,8 @@ https://chocolatey.org/
 Using a specific shell
 https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#using-a-specific-shell
 
+Available Environments
+https://github.com/actions/virtual-environments
 ~~~
 
 ~~~
