@@ -90,8 +90,8 @@ jobs:
         # docker run microsoft/dotnet-samples:dotnetapp-nanoserver-1809
     - name: "build docker image"
       run: |
-        echo $env:GENERATOR_PLATFORM 
-        echo  ${name}      
+        echo $env:dockerfilename 
+        echo $env:name     
         # docker build -t ${name}/${version}  . --file dockerfiles/${dockerfilename}         
         # docker image ls
         # docker image history ${name}/${version}
