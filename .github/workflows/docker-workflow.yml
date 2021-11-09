@@ -49,6 +49,8 @@ jobs:
       run: |
         docker-compose version
         docker-compose up -d
+        docker-compose images
+        docker-compose ps
         docker-compose down
 
   windows-latest:
@@ -103,6 +105,17 @@ jobs:
         # docker image history ${name}/${version}
         # docker system df -v               
         # # docker image inspect ${name}/${version}
+    - name: "build docker dotnet image"
+      run: |  
+        docker build --no-cache --rm  -t dotnet/base/latest  . --file dockerfiles/Dockerfile.dotnet
+        docker image ls  
+    - name: "build docker compose"
+      run: |
+        docker-compose version
+        docker-compose up -d
+        docker-compose images
+        docker-compose ps
+        docker-compose down              
     # - name: "build docker composetest"
     #   run: |
     #     # mkdir composetest && cd composetest     
