@@ -37,12 +37,16 @@ jobs:
       # https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2022%2Cwindows-10-21H1
     - name: "docker run"
       run: |
-        Start-Service Docker
-        docker info
-        docker version
-        docker --version
+        # Start-Service Docker
+        # docker info
+        # docker version
+        # docker --version
         docker ps
-        wsl -l -v
+    - name: "Deploy a Test Container"
+      run: |
+        # Host version: Windows Server 2019
+        Get-WindowsFeature -Name Containers
+        docker run microsoft/dotnet-samples:dotnetapp-nanoserver-1809
 
   # windows-2019: 
   #   name: "Microsoft Windows Server 2019 Datacenter"
