@@ -52,7 +52,7 @@ jobs:
     env:
       distribution: "scientificlinux" # https://hub.docker.com/_/sl
       version: "latest"
-      name: "iis/base"
+      name: "servercore/base"
       # dockerfilename: "Dockerfile.iis"    
       dockerfilename: "Dockerfile.servercore.2019"    
     steps:
@@ -98,6 +98,10 @@ jobs:
         # docker image history ${name}/${version}
         # docker system df -v               
         # # docker image inspect ${name}/${version}
+    - name: "build docker compose"
+      run: |
+        # mkdir composetest && cd composetest     
+        cd composetest && docker-compose up
     # - name: "build docker image"
     #   run: |        
     #     docker-compose --version
