@@ -94,7 +94,10 @@ jobs:
         docker image ls
         docker image history ${name}/${version}
         docker system df -v               
-        docker image inspect ${name}/${version}
+        # docker image inspect ${name}/${version}
+        docker-compose ps
+        docker-compose -f docker-compose-iis.yml up -d appsrv
+        docker-compose ps
   # windows-2019: 
   #   name: "Microsoft Windows Server 2019 Datacenter"
   #   runs-on: windows-2019
