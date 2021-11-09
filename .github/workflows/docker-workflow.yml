@@ -36,7 +36,14 @@ jobs:
       # Windows container version compatibility
       # https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2022%2Cwindows-10-21H1
     - name: "docker run"
-      run: Start-Service Docker
+      run: |
+        Start-Service Docker
+        docker info
+        Get-Process 'com.docker.proxy'
+        docker version
+        docker --version
+        docker ps
+        wsl -l -v
 
   # windows-2019: 
   #   name: "Microsoft Windows Server 2019 Datacenter"
