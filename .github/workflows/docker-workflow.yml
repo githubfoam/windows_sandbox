@@ -53,7 +53,8 @@ jobs:
       distribution: "scientificlinux" # https://hub.docker.com/_/sl
       version: "latest"
       name: "iis/base"
-      dockerfilename: "Dockerfile.iis"    
+      # dockerfilename: "Dockerfile.iis"    
+      dockerfilename: "Dockerfile.servercore.2019"    
     steps:
     - name: Checkout
       uses: actions/checkout@v1
