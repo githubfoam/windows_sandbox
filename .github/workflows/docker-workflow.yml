@@ -44,7 +44,9 @@ jobs:
       run: |
         Get-WindowsFeature -Name Containers
         docker pull mcr.microsoft.com/windows/nanoserver:ltsc2022
-        docker images        
+        docker images   
+# 12-alpine: Pulling from library/node
+# no matching manifest for windows/amd64 10.0.17763 in the manifest list entries             
     - name: "build docker compose"
       run: |
         docker-compose version
@@ -109,6 +111,8 @@ jobs:
       run: |  
         docker build --no-cache --rm  -t dotnet/base/latest  . --file dockerfiles/Dockerfile.dotnet
         docker image ls  
+# 12-alpine: Pulling from library/node
+# no matching manifest for windows/amd64 10.0.17763 in the manifest list entries        
     - name: "build docker compose"
       run: |
         docker-compose version
