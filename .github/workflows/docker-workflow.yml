@@ -90,7 +90,7 @@ jobs:
         # docker run microsoft/dotnet-samples:dotnetapp-nanoserver-1809
     - name: "build docker image"
       run: |        
-        sudo docker build --no-cache --rm  -t ${name}/${version}  . --file dockerfiles/${dockerfilename}         
+        docker build --no-cache --rm  -t ${name}/${version}  . --file dockerfiles/${dockerfilename}         
         docker image ls
         docker image history ${name}/${version}
         docker system df -v               
