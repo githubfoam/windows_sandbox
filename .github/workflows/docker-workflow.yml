@@ -39,7 +39,6 @@ jobs:
       run: |
         Start-Service Docker
         docker info
-        Get-Process 'com.docker.proxy'
         docker version
         docker --version
         docker ps
