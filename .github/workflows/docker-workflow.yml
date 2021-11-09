@@ -45,6 +45,11 @@ jobs:
         Get-WindowsFeature -Name Containers
         docker pull mcr.microsoft.com/windows/nanoserver:ltsc2022
         docker images        
+    - name: "build docker compose"
+      run: |
+        docker-compose version
+        docker-compose up -d
+        docker-compose down
 
   windows-latest:
     name: "windows-latest"  
@@ -98,10 +103,10 @@ jobs:
         # docker image history ${name}/${version}
         # docker system df -v               
         # # docker image inspect ${name}/${version}
-    - name: "build docker compose"
-      run: |
-        # mkdir composetest && cd composetest     
-        cd composetest && docker-compose up
+    # - name: "build docker composetest"
+    #   run: |
+    #     # mkdir composetest && cd composetest     
+    #     cd composetest && docker-compose up
     # - name: "build docker image"
     #   run: |        
     #     docker-compose --version
