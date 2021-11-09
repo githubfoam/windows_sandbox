@@ -110,9 +110,14 @@ jobs:
     - name: "build docker dotnet image"
       run: |  
         docker build --no-cache --rm  -t dotnet/base/latest  . --file dockerfiles/Dockerfile.dotnet
-        docker image ls  
+        docker image ls       
+    - name: "build docker node image"
+      run: |  
+        docker build --no-cache --rm  -t dotnet/base/latest  . --file dockerfiles/Dockerfile.dotnet
+        docker image ls           
 # 12-alpine: Pulling from library/node
 # no matching manifest for windows/amd64 10.0.17763 in the manifest list entries        
+# https://hub.docker.com/_/node/
     - name: "build docker compose"
       run: |
         docker-compose version
