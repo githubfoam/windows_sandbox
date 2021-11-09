@@ -40,13 +40,15 @@ jobs:
         # Start-Service Docker
         # docker info
         # docker version
-        # docker --version
-        docker ps
+        docker --version
+        # docker ps
     - name: "Deploy a Test Container"
       run: |
         # Host version: Windows Server 2019
         Get-WindowsFeature -Name Containers
-        docker run microsoft/dotnet-samples:dotnetapp-nanoserver-1809
+        docker pull mcr.microsoft.com/windows/nanoserver:ltsc2022
+        docker images
+        # docker run microsoft/dotnet-samples:dotnetapp-nanoserver-1809
 
   # windows-2019: 
   #   name: "Microsoft Windows Server 2019 Datacenter"
