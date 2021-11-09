@@ -34,16 +34,14 @@ jobs:
       # https://hub.docker.com/_/microsoft-windows-base-os-images
       # Windows container version compatibility
       # https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2022%2Cwindows-10-21H1
-    - name: "docker run"
+    - name: "docker info"
       run: |
-        # Start-Service Docker
         docker info
         docker version
         docker --version
         docker ps
     - name: "Deploy a Test Container"
       run: |
-        # Host version: Windows Server 2019
         Get-WindowsFeature -Name Containers
         docker pull mcr.microsoft.com/windows/nanoserver:ltsc2022
         docker images        
@@ -73,19 +71,16 @@ jobs:
       # https://hub.docker.com/_/microsoft-windows-base-os-images
       # Windows container version compatibility
       # https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2022%2Cwindows-10-21H1
-    - name: "docker run"
+    - name: "docker info"
       run: |
-        # Start-Service Docker
         # docker info
         # docker version
         docker --version
         # docker ps
     - name: "Deploy a Test Container"
       run: |
-        # Host version: Windows Server 2019
         Get-WindowsFeature -Name Containers
-        # docker pull mcr.microsoft.com/windows/nanoserver:ltsc2022
-        docker run --name dock2022 mcr.microsoft.com/windows/nanoserver:ltsc2022
+        docker run --name dock2019 mcr.microsoft.com/windows/nanoserver:1809
         docker images
         # docker run microsoft/dotnet-samples:dotnetapp-nanoserver-1809
 
