@@ -49,6 +49,11 @@ jobs:
   windows-latest:
     name: "windows-latest"  
     runs-on: windows-latest
+    env:
+      distribution: "scientificlinux" # https://hub.docker.com/_/sl
+      version: "latest"
+      name: "iis/base"
+      dockerfilename: "Dockerfile.iis"    
     steps:
     - name: Checkout
       uses: actions/checkout@v1
@@ -83,7 +88,13 @@ jobs:
         docker run --name dock2019 mcr.microsoft.com/windows/nanoserver:1809
         docker images
         # docker run microsoft/dotnet-samples:dotnetapp-nanoserver-1809
-
+    - name: "build docker image"
+      run: |        
+        sudo docker build --no-cache --rm  -t ${name}/${version}  . --file dockerfiles/${dockerfilename}         
+        docker image ls
+        docker image history ${name}/${version}
+        docker system df -v               
+        docker image inspect ${name}/${version}
   # windows-2019: 
   #   name: "Microsoft Windows Server 2019 Datacenter"
   #   runs-on: windows-2019
