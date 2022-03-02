@@ -18,13 +18,14 @@ jobs:
     - name: "os fingerprinting"
       run: hostnamectl status    
 
-  ubuntu-1604-job:
-    name: "ubuntu-16.04"
-    runs-on: ubuntu-16.04
-    steps:
-    - uses: actions/checkout@v2
-    - name: "os fingerprinting"
-      run: hostnamectl status  
+  #deprecetad
+  # ubuntu-1604-job:
+  #   name: "ubuntu-16.04"
+  #   runs-on: ubuntu-16.04
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: "os fingerprinting"
+  #     run: hostnamectl status  
 
   ubuntu-1804-job:
     name: "ubuntu-18.04"
