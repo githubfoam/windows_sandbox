@@ -18,7 +18,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: "os fingerprinting"
       run: hostnamectl status    
-      
+
   #deprecated
   # ubuntu-1604-job:
   #   name: "ubuntu-16.04"
@@ -146,6 +146,29 @@ jobs:
       run: net start                       
     - name: "query unusual services"
       run: sc query  
+
+  windows-2022: 
+    name: "Microsoft Windows Server 2019 Datacenter"
+    runs-on: windows-2022
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: "check if server is virtual"
+      run: Systeminfo | findstr /i model   
+    - name: "check the PROCESSOR_ARCHITECTURE environment variable.64-bit systems will say AMD64 and 32-bit systems should say x86"
+      run: wmic OS get OSArchitecture     
+    - name: "osfingerprinting"
+      run: systeminfo | more  
+    - name: "display all processes, executable path"
+      run: wmic process list full         
+    - name: "list of running services"
+      run: tasklist         
+    - name: "list of all processes along with their corresponding PID, and services that are tied to them"
+      run: tasklist /svc  
+    - name: "look for unusual services"
+      run: net start                       
+    - name: "query unusual services"
+      run: sc query
 
   windows-2019: 
     name: "Microsoft Windows Server 2019 Datacenter"
